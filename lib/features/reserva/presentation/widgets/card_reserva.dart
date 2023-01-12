@@ -29,13 +29,15 @@ class CardReserva extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    
-    const boxDecoration = BoxDecoration(color: Colors.white, boxShadow: [
-      BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 2)
+    final boxDecoration = BoxDecoration(
+      borderRadius: BorderRadius.circular(8),
+      color: Colors.white, boxShadow:  [
+      BoxShadow(color: Colors.black12.withOpacity(0.05) , blurRadius: 7,offset: const Offset(0.5, 0.5))
     ]);
     return Container(
+        
         decoration: boxDecoration,
         padding: const EdgeInsets.all(16),
-        width: double.infinity,
         height: 224,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
