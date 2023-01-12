@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:woki_partner/features/reserva/domain/entities/client_data.dart';
+import 'package:woki_partner/features/user/domain/entity/client_data.dart';
 
 class ClientDataModel extends ClientData {
   

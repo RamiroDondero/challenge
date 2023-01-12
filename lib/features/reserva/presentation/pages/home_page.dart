@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
-import '../../domain/entities/client_data.dart';
+import '../../../user/domain/entity/client_data.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -88,33 +88,21 @@ final grupos = List.generate(
     (index) => GrupoTarjetas(
           reservas: [
             Reserva(
-                id: '',
                 clientData: [
                   ClientData(
                       email: 'email',
                       id: 'id',
                       name: 'name',
                       phone: 'phone',
-                      token: 'token')
+                      token: 'token'
+                      )
                 ],
                 comment: 'comment',
-                createdAt: 'createdAt',
-                createdExpirationDate: 'createdExpirationDate',
-                createdTimestamp: 'createdTimestamp',
                 day: 'day',
                 quantity: 0,
-                sector: Sector.PATIO,
-                shiftsTolerance: 0,
+                sector: 'Patio',
                 showDay: 'showDay',
                 state: 0,
-                updatedAt: 'updatedAt',
-                acceptedTimestamp: 'acceptedTimestamp',
-                confirmationPendingTimestamp: 'confirmationPendingTimestamp',
-                arrivedTimestamp: 'arrivedTimestamp',
-                noArrivedTimestamp: 'noArrivedTimestamp',
-                deletedByUserTimestamp: 'deletedByUserTimestamp',
-                rejectedTimestamp: 'rejectedTimestamp',
-                confirmedTimestamp: 'confirmedTimestamp',
-                editedByPartnerTimestamp: 'editedByPartnerTimestamp')
+                )
           ],
         ));

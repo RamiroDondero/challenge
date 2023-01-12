@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:woki_partner/features/reserva/domain/entities/client_data.dart';
+import 'package:woki_partner/features/user/domain/entity/client_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:woki_partner/features/reserva/presentation/pages/home_page.dart';
 import 'package:woki_partner/features/reserva/presentation/widgets/grupo_tarjetas.dart';
@@ -46,38 +46,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TestScreen extends StatelessWidget {
-  const TestScreen({super.key});
+// class TestScreen extends StatelessWidget {
+//   const TestScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return   Scaffold(
-      body: GrupoTarjetas(reservas: [
-        Reserva(
-          id: '',
-         clientData: [ClientData(email: 'email', id: 'id', name: 'name', phone: 'phone', token: 'token')],
-          comment: 'comment',
-           createdAt: 'createdAt',
-            createdExpirationDate: 'createdExpirationDate',
-             createdTimestamp: 'createdTimestamp',
-              day: 'day',
-               quantity: 0,
-                sector: Sector.PATIO,
-                 shiftsTolerance: 0,
-                  showDay: 'showDay',
-                   state: 0,
-                    updatedAt: 'updatedAt',
-                     acceptedTimestamp: 'acceptedTimestamp',
-                      confirmationPendingTimestamp: 'confirmationPendingTimestamp',
-                       arrivedTimestamp: 'arrivedTimestamp',
-                        noArrivedTimestamp: 'noArrivedTimestamp', 
-                        deletedByUserTimestamp: 'deletedByUserTimestamp',
-                         rejectedTimestamp: 'rejectedTimestamp',
-                          confirmedTimestamp: 'confirmedTimestamp', 
-                          editedByPartnerTimestamp: 'editedByPartnerTimestamp'
-                          )
-      ],)
-      );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return   Scaffold(
+//       body: GrupoTarjetas(reservas: [
+//         Reserva(
+//           id: '',
+//          clientData: [ClientData(email: 'email', id: 'id', name: 'name', phone: 'phone', token: 'token')],
+//           comment: 'comment',
+//            createdAt: 'createdAt',
+//             createdExpirationDate: 'createdExpirationDate',
+//              createdTimestamp: 'createdTimestamp',
+//               day: 'day',
+//                quantity: 0,
+//                 sector: Sector.PATIO,
+//                  shiftsTolerance: 0,
+//                   showDay: 'showDay',
+//                    state: 0,
+//                     updatedAt: 'updatedAt',
+//                      acceptedTimestamp: 'acceptedTimestamp',
+//                       confirmationPendingTimestamp: 'confirmationPendingTimestamp',
+//                        arrivedTimestamp: 'arrivedTimestamp',
+//                         noArrivedTimestamp: 'noArrivedTimestamp', 
+//                         deletedByUserTimestamp: 'deletedByUserTimestamp',
+//                          rejectedTimestamp: 'rejectedTimestamp',
+//                           confirmedTimestamp: 'confirmedTimestamp', 
+//                           editedByPartnerTimestamp: 'editedByPartnerTimestamp'
+//                           )
+//       ],)
+//       );
+//   }
+// }
 

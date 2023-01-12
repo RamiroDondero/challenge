@@ -37,7 +37,7 @@ class CardReserva extends StatelessWidget {
     return Container(
         
         decoration: boxDecoration,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(top: 16 , right: 16, left: 16 , bottom: 5),
         height: 224,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +62,7 @@ class CardReserva extends StatelessWidget {
            
             _Opciones(),
 
-            Container(width: 50, height: 2, color: CustomThemeData.greyLines ,)
+            Container(width: 67, height: 2, color: CustomThemeData.greyLines ,)
             
           ],
         ));
