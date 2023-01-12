@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:woki_partner/features/reserva/infrastructure/models/client_data_model.dart';
 
-import '../../domain/models/reserva.dart';
+import '../../domain/entities/reserva.dart';
+
 
 class ReservaModel extends Reserva {
 

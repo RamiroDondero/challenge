@@ -1,32 +1,39 @@
-import 'dart:io';
-import 'dart:convert';
+import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:woki_partner/features/reserva/infrastructure/models/reserva_model.dart';
-import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:woki_partner/features/reserva/presentation/widgets/card_reserva.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final reservasBloc = BlocProvider.of<ReservasBloc>(context);
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
-               final resp = File('test/fixtures/datos_prueba_tecnica.json').readAsStringSync();
-        final decoded = json.decode(resp);
-        final instancia = ReservaModel.fromMap(decoded[0]);
-        print(instancia.sector);
-      }),
-      body: const Center(
-          child: CardReserva(
-              nombre: 'ramiro',
-              ubicaion: 'mar del plata',
-              carrito: true,
-              discapacitado: true,
-              numeroPersonas: 2,
-              telefonoReserva: '4343',
-              comentario: 'lalal',
-              hora: 'lalal',
-              email: 'ramiro')),
+      body: BlocBuilder<ReservasBloc, ReservasState>(
+        builder: (context, state) {
+          final lista = state.listaReservas;
+          return state.listaReservas.isEmpty
+              ? const Text('no hay data')
+              : ListView.builder(
+                  itemCount: lista.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CardReserva(
+                        nombre: lista[index].clientData?[0]?.name ?? '',
+                        ubicaion: lista[index].sector.toString(),
+                        carrito: true,
+                        discapacitado: false,
+                        numeroPersonas: lista[index].quantity ?? 0,
+                        telefonoReserva: lista[index].clientData?[0]?.phone ?? '',
+                        comentario: lista[index].comment ?? '',
+                        hora: lista[index].acceptedTimestamp ?? '',
+                        email: lista[index].clientData?[0]?.name ?? '',
+                        );
+                  },
+                );
+        },
+      ),
     );
   }
 }
