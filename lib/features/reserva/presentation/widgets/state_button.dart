@@ -23,7 +23,8 @@ class StateButton extends StatelessWidget {
     return AnimatedContainer(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       alignment: Alignment.center,
-      width: 110,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      // width: 110,
       height: 30,
       decoration:  boxDecoration,
       duration: const Duration(milliseconds: 500),

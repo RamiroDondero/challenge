@@ -14,7 +14,7 @@ class AddButton extends StatelessWidget {
         color: CustomThemeData.addButton,
         shape: BoxShape.circle
       ),
-      child: const  Icon(Icons.add , color: Colors.white),
+      child: const  Icon(Icons.person_add_alt, color: Colors.white),
     );
   }
 }
