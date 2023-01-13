@@ -199,26 +199,16 @@ class _Contenido extends StatelessWidget {
     return Column(
       children: [
 
-        _buildLine(Icons.phone, tel),
+        LineText(Icons.phone, tel ),
 
         const SizedBox(height: 5),
 
-        _buildLine(Icons.email, email),
+        LineText(Icons.email, email),
 
         const SizedBox(height: 5),
 
-        _buildLine(CupertinoIcons.chat_bubble_text, comentario),
+        LineText(CupertinoIcons.chat_bubble_text, comentario),
 
-      ],
-    );
-  }
-
-  Row _buildLine(IconData icon, String text) {
-    return Row(
-      children: [
-        Icon(icon, size: 12, color: Colors.grey),
-        const SizedBox(width: 5),
-        Text(text, style: const TextStyle(color: Colors.grey)),
       ],
     );
   }
@@ -230,23 +220,17 @@ class _Opciones extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        _buildButton(CupertinoIcons.chat_bubble_text, 'Editar nota'),
-        _buildButton(Icons.edit_outlined, 'Editar reseva'),
-        _buildButton(CustomThemeData.tableRestaurantIcon, 'Asignar mesa'),
+      
+      children: const [
+
+        OptionButton(CupertinoIcons.chat_bubble_text, 'Editar nota'),
+
+        OptionButton(Icons.edit_outlined, 'Editar reseva'),
+
+        OptionButton(CustomThemeData.tableRestaurantIcon, 'Asignar mesa'),
+
       ],
     );
   }
 
-  Widget _buildButton(IconData icon, String text) => Container(
-        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 6),
-        decoration: CustomThemeData.sombrasTarjetas,
-        child: Row(
-          children: [
-            Icon(icon, size: 12),
-            const SizedBox(width: 5),
-            Text( text, style: CustomThemeData.subtitle )
-          ],
-        ),
-      );
 }

@@ -1,3 +1,5 @@
+export 'package:woki_partner/features/reserva/presentation/widgets/buttons/option_button.dart';
+export 'package:woki_partner/features/reserva/presentation/widgets/cards/line_text.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/cards/custom_icon.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/cards/preferences.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/cards/grupo_tarjetas.dart';
