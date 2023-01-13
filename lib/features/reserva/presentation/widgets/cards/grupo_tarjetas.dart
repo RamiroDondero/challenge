@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
-import '../../../../core/custom_theme_data.dart';
-import '../../domain/entities/reserva.dart';
+import '../../../../../core/custom_theme_data.dart';
+import '../../../domain/entities/reserva.dart';
 
 class GrupoTarjetas extends StatelessWidget {
   final List<Reserva> reservas;
@@ -35,24 +34,25 @@ class _Horario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text('11:00hs - 14:00hs',
-              style: CustomThemeData.horaGrupoReservas),
-          Row(
-            children: [
-              CustomThemeData.icon(Icons.add),
-              const SizedBox(width: 5),
-              const Text('11/50', style: CustomThemeData.iconosReservas),
-              const SizedBox(width: 5),
-              CustomThemeData.icon(CupertinoIcons.arrow_right)
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text('11:00hs - 14:00hs',
+            style: CustomThemeData.horaGrupoReservas),
+        Container(
+          decoration: CustomThemeData.sombrasTarjetas,
+          padding: const EdgeInsets.symmetric(vertical: 6 , horizontal: 10),
+          child: Row(
+            children: const  [
+               CustomIcon(CustomThemeData.tableRestaurantIcon),
+               SizedBox(width: 5),
+               Text('11/50', style: CustomThemeData.subtitle),
+               SizedBox(width: 5),
+               CustomIcon(Icons.east)
             ],
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

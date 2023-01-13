@@ -11,14 +11,7 @@ class StateButton extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final boxDecoration = BoxDecoration(
-          boxShadow:  [
-            BoxShadow(
-              color: Colors.black12.withOpacity(0.05),
-              blurRadius: 5.0,
-              spreadRadius: 1.0,
-              offset: const Offset(4, 4)
-            )
-          ],
+          boxShadow:  [ CustomThemeData.sombra ],
           color: selected ? CustomThemeData.primaryColor : Colors.white,
           borderRadius: const BorderRadius.all(Radius.circular(16)));
 
@@ -32,10 +25,10 @@ class StateButton extends StatelessWidget {
       duration: const Duration(milliseconds: 500),
       child: Text('$text (0)', 
                   style:  TextStyle(
-                    color: selected ? Colors.white : const Color(0xff0B4762) ,
+                    color: selected ? Colors.white : CustomThemeData.primaryColor ,
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
-                    letterSpacing:  2 
+                    letterSpacing:  0.6 
                     )),
     );
   }

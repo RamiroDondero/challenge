@@ -12,6 +12,9 @@ class GetLisTReservas implements UseCase<List<Reserva>, NoParams> {
 
   @override
   Future<Either<Failure, List<Reserva>>> call(noParams) {
-    return repository.getListReservas();
+
+    return  repository.getListReservas();
+
+
   }
 }

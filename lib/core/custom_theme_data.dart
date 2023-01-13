@@ -9,8 +9,46 @@ class CustomThemeData {
   static const Color addButton = Color(0xff35C18F);
   static const Color divider = Color(0xffB9B9B9);
 
-  static const TextStyle horaGrupoReservas = TextStyle( fontWeight: FontWeight.w600, color: CustomThemeData.dark, fontSize: 16);
-  static const TextStyle iconosReservas = TextStyle(color: CustomThemeData.dark, fontSize: 12);
+  static const IconData tableRestaurantIcon = Icons.table_restaurant_outlined;
 
-  static Widget icon(IconData icon) =>  Icon( icon , color: CustomThemeData.dark, size: 12);
+  static const TextStyle horaGrupoReservas = TextStyle(
+      fontWeight: FontWeight.w600,
+      color: CustomThemeData.dark,
+      fontSize: 16,
+      fontFamily: 'Poppins');
+
+  static const TextStyle subtitle = TextStyle(
+      color: CustomThemeData.dark, fontSize: 12, fontWeight: FontWeight.w500);
+
+  static const TextStyle nombreUsuario = TextStyle(
+      color: CustomThemeData.dark, fontWeight: FontWeight.w700, fontSize: 14);
+
+  static BoxShadow sombra = BoxShadow(
+      color: Colors.black12.withOpacity(0.05),
+      blurRadius: 7,
+      offset: const Offset(4, 4));
+
+  static BoxDecoration sombrasTarjetas = BoxDecoration(
+      borderRadius: BorderRadius.circular(8),
+      color: Colors.white,
+      boxShadow: [sombra]);
+
+  // static Widget icon(IconData icon, {Color color = CustomThemeData.dark}) =>
+  //     Icon(icon, color: color, size: 12);
+
+  //////////////////////////////////////////// FORMULARIO
+
+  static TextStyle formTitle = const TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w600, color: CustomThemeData.dark);
+
+  static BoxDecoration inputStyle = BoxDecoration(
+      border: Border.all(color: CustomThemeData.greyLines),
+      borderRadius: BorderRadius.circular(10));
+
+  static ButtonStyle buttonSubmitStyle = ButtonStyle(
+      minimumSize: MaterialStateProperty.all(const Size(double.infinity, 50)),
+      backgroundColor: MaterialStateProperty.all(CustomThemeData.primaryColor));
+
+  static TextStyle buttonSubmitTextStyle =
+      const TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
 }

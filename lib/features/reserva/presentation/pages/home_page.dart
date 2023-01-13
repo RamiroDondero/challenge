@@ -92,7 +92,7 @@ final grupos = List.generate(
                   ClientData(
                       email: 'email',
                       id: 'id',
-                      name: 'name',
+                      name: 'Valentina Cecchi',
                       phone: 'phone',
                       token: 'token'
                       )

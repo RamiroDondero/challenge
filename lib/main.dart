@@ -2,11 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:woki_partner/features/user/domain/entity/client_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:woki_partner/features/reserva/presentation/pages/home_page.dart';
-import 'package:woki_partner/features/reserva/presentation/widgets/grupo_tarjetas.dart';
-import 'features/reserva/domain/entities/reserva.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -38,10 +35,11 @@ class MyApp extends StatelessWidget {
     final reservasBloc = BlocProvider.of<ReservasBloc>(context);
     reservasBloc.add(GetListReservasEvent());
 
-    return const MaterialApp(
+    return  MaterialApp(
+      theme: ThemeData(fontFamily: 'Poppins'), 
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

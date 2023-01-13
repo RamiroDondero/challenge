@@ -5,6 +5,7 @@ import 'package:woki_partner/features/reserva/domain/repositories/reserva_reposi
 import 'package:woki_partner/features/reserva/infrastructure/datasources/reserva_remote_data_source.dart';
 
 class ReservaRepositoryImpl extends ReservaRepository {
+  
   final ReservaRemoteDataSource dataSource;
 
   ReservaRepositoryImpl({required this.dataSource});
