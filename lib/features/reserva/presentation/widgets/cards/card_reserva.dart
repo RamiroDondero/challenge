@@ -4,7 +4,7 @@ import 'package:woki_partner/core/custom_theme_data.dart';
 
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
-class CardReserva extends StatelessWidget {
+class CardReserva extends StatefulWidget {
   final String nombre;
   final String ubicaion;
   final bool carrito;
@@ -31,47 +31,79 @@ class CardReserva extends StatelessWidget {
   });
 
   @override
+  State<CardReserva> createState() => _CardReservaState();
+}
+
+class _CardReservaState extends State<CardReserva> {
+  bool show = true;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.only(bottom: 3, top: 4),
-        decoration: CustomThemeData.sombrasTarjetas,
-        padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 5),
-        height: 224,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _TituloCard(
-              nombre: nombre,
-              numeroPersonas: numeroPersonas,
-              hora: hora,
-              comentario: comentario,
-              state: state,
-            ),
-            _Asignaciones(
-              ubicacion: ubicaion,
-              carrito: carrito,
-              discapacitado: discapacitado,
-            ),
-            _Contenido(
-              tel: telefonoReserva,
-              email: email,
-              comentario: comentario,
-            ),
-            _Opciones(),
-            Container(width: 67, height: 2, color: CustomThemeData.greyLines)
-          ],
-        ));
+    return GestureDetector(
+      onTap: () {
+        show = !show;
+        setState(() { });
+      },
+      child: AnimatedContainer(
+          height: show == true ? 224 : 100,
+          margin: const EdgeInsets.only(bottom: 3, top: 4),
+          decoration: CustomThemeData.sombrasTarjetas,
+          padding:
+              const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 5),
+          duration: const Duration(milliseconds: 90),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _TituloCard(
+                nombre: widget.nombre,
+                numeroPersonas: widget.numeroPersonas,
+                hora: widget.hora,
+                comentario: widget.comentario,
+                state: widget.state,
+              ),
+
+              const SizedBox(height: 10),
+
+              _Asignaciones(
+                ubicacion: widget.ubicaion,
+                carrito: widget.carrito,
+                discapacitado: widget.discapacitado,
+              ),
+
+              const SizedBox(height: 10),
+
+              show == true
+              ?_Contenido(
+                tel: widget.telefonoReserva,
+                email: widget.email,
+                comentario: widget.comentario,
+              )
+              :const SizedBox(),
+
+              const SizedBox(height: 10),
+
+              show == true
+              ?_Opciones()
+              :const SizedBox(),
+
+              show == true
+              ?const SizedBox(height: 10)
+              :const SizedBox(),
+
+              Container(width: 67, height: 2, color: CustomThemeData.greyLines)
+            ],
+          )),
+    );
   }
 }
 
 class _TituloCard extends StatelessWidget {
-  const _TituloCard({
-    required this.nombre,
-    required this.numeroPersonas,
-    required this.hora,
-    required this.comentario,
-    required this.state
-    });
+  const _TituloCard(
+      {required this.nombre,
+      required this.numeroPersonas,
+      required this.hora,
+      required this.comentario,
+      required this.state});
 
   final String nombre;
   final int numeroPersonas;
@@ -112,21 +144,13 @@ class _TituloCard extends StatelessWidget {
   Widget _margenDerecho() => Row(
         children: [
           const CustomIcon(Icons.person_outline_outlined, size: 16),
-
           Text('$numeroPersonas', style: const TextStyle(fontSize: 12)),
-
           const SizedBox(width: 5),
-
           const CircleAvatar(maxRadius: 2, backgroundColor: Colors.black),
-
           const SizedBox(width: 5),
-
           const CustomIcon(Icons.calendar_today_outlined),
-
           const SizedBox(width: 5),
-
           const Text('12:00 hs', style: TextStyle(fontSize: 12)),
-
         ],
       );
 }
@@ -185,17 +209,13 @@ class _Contenido extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        tel.isEmpty
-        ?const SizedBox()
-        :LineText(Icons.phone, tel),
+        tel.isEmpty ? const SizedBox() : LineText(Icons.phone, tel),
         const SizedBox(height: 5),
-        email.isEmpty
-        ?const SizedBox()
-        :LineText(Icons.email, email),
+        email.isEmpty ? const SizedBox() : LineText(Icons.email, email),
         const SizedBox(height: 5),
         comentario.isEmpty
-        ?const SizedBox()
-        :LineText(CupertinoIcons.chat_bubble_text, comentario),
+            ? const SizedBox()
+            : LineText(CupertinoIcons.chat_bubble_text, comentario),
       ],
     );
   }
