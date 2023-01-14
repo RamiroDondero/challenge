@@ -12,7 +12,7 @@ class LineText extends StatelessWidget {
       children: [
         Icon(icon, size: 12, color: Colors.grey),
         const SizedBox(width: 5),
-        Text(text, style: const TextStyle(color: Colors.grey)),
+        Text(text, style: const TextStyle(color: Colors.grey ,overflow: TextOverflow.fade)),
       ],
     );
   }

@@ -69,40 +69,19 @@ class _ListaReservas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lista = state.listaReservas;
+    final listaAgrupada = state.listaReservasAgrupadas;
+
     return Expanded(
       child: ListView.builder(
-        itemCount: grupos.length,
+        itemCount: listaAgrupada.length,
         itemBuilder: (BuildContext context, int index) {
-          return grupos[index];
+                 
+          return listaAgrupada[index].reservas.isEmpty
+           ? const SizedBox()
+           :GrupoTarjetas(grupoReservas: listaAgrupada[index]);
         },
       ),
     );
   }
 }
 
-
-// TODO.. ESTA LISTA VA A VENIR DEL STATE EN MODO MAPA Y TENGO QUE CREAR EN ESTE LISTVIEW LOS GRUPOS DE TARJETAS
-final grupos = List.generate(
-    4,
-    (index) => GrupoTarjetas(
-          reservas: [
-            Reserva(
-                clientData: [
-                  ClientData(
-                      email: 'email',
-                      id: 'id',
-                      name: 'Valentina Cecchi',
-                      phone: 'phone',
-                      token: 'token'
-                      )
-                ],
-                comment: 'comment',
-                day: 'day',
-                quantity: 0,
-                sector: 'Patio',
-                showDay: 'showDay',
-                state: 0,
-                )
-          ],
-        ));

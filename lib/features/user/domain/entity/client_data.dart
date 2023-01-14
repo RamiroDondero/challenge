@@ -1,10 +1,10 @@
 class ClientData {
   
-    final String? email;
-    final String? id;
-    final String? name;
-    final String? phone;
-    final String? token;
+    final String email;
+    final String id;
+    final String name;
+    final String phone;
+    final String token;
 
   ClientData({
         required this.email,

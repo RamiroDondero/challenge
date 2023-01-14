@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import 'package:woki_partner/features/user/infrastructure/models/client_data_model.dart';
-
+import '../../../user/infrastructure/models/client_data_model.dart';
 import '../../domain/entities/reserva.dart';
 
-
 class ReservaModel extends Reserva {
-
-  final List<ClientDataModel?>? clientData;
+  
+  final List<ClientDataModel> clientData;
 
   ReservaModel({
     required this.clientData,
@@ -25,21 +23,18 @@ class ReservaModel extends Reserva {
   String toJson() => json.encode(toMap());
 
   factory ReservaModel.fromMap(Map<String, dynamic> json) => ReservaModel(
-        clientData: json["clientData"] == null 
-            ? [] 
-            : List<ClientDataModel?>.from( json["clientData"]!.map((x) => ClientDataModel.fromMap(x))),
-        comment: json["comment"],
-        day: json["day"],
-        quantity: json["quantity"],
-        sector: json["sector"],
-        showDay: json["showDay"],
-        state: json["state"],
+        clientData: List<ClientDataModel>.from(
+            json["clientData"].map((x) => ClientDataModel.fromMap(x))),
+        comment: json["comment"] ?? '',
+        day: json["day"] ?? '',
+        quantity: json["quantity"] ?? '',
+        sector: json["sector"] ?? '',
+        showDay: json["showDay"] ?? '',
+        state: json["state"] ?? '',
       );
 
   Map<String, dynamic> toMap() => {
-        "clientData": clientData == null
-            ? []
-            : List<dynamic>.from(clientData!.map((x) => x!.toMap())),
+        "clientData": List<dynamic>.from(clientData.map((x) => x.toMap())),
         "comment": comment,
         "day": day,
         "quantity": quantity,
@@ -51,3 +46,11 @@ class ReservaModel extends Reserva {
 
 
 
+//  clientData: json["clientData"] == null 
+//             ? [] 
+//             : List<ClientDataModel?>.from( json["clientData"]!.map((x) => ClientDataModel.fromMap(x))),
+
+
+// "clientData": clientData == null
+//             ? []
+//             : List<dynamic>.from(clientData!.map((x) => x!.toMap())),

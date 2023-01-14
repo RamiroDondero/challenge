@@ -17,11 +17,11 @@ class ClientDataModel extends ClientData {
     String toJson() => json.encode(toMap());
 
     factory ClientDataModel.fromMap(Map<String, dynamic> json) => ClientDataModel(
-        email: json["email"],
-        id: json["id"],
-        name: json["name"],
-        phone: json["phone"],
-        token: json["token"],
+        email: json["email"] ?? '',
+        id: json["id"] ?? '',
+        name: json["name"] ?? '',
+        phone: json["phone"] ?? '',
+        token: json["token"] ?? '',
     );
 
     Map<String, dynamic> toMap() => {

@@ -1,16 +1,16 @@
 part of 'reservas_bloc.dart';
 
 class ReservasState extends Equatable {
-  final List<Reserva> listaReservas;
+  final List<GrupoReservas> listaReservasAgrupadas;
 
-  const ReservasState({this.listaReservas = const [] });
+  const ReservasState({this.listaReservasAgrupadas = const [] });
 
   @override
-  List<Object> get props => [listaReservas];
+  List<Object> get props => [listaReservasAgrupadas];
 
   ReservasState copyWith({
-    List<Reserva>? listaReservas
+    List<GrupoReservas>? listaReservasAgrupadas
   }) =>  ReservasState(
-    listaReservas: listaReservas ?? this.listaReservas
+    listaReservasAgrupadas: listaReservasAgrupadas ?? this.listaReservasAgrupadas
   );
 }

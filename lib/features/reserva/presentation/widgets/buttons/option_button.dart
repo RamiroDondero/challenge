@@ -16,7 +16,7 @@ class OptionButton extends StatelessWidget {
       decoration: CustomThemeData.sombrasTarjetas,
       child: Row(
         children: [
-          Icon(icon, size: 12),
+          Icon(icon, size: 12 , color: CustomThemeData.primaryColor,),
           const SizedBox(width: 5),
           Text(text, style: CustomThemeData.subtitle)
         ],

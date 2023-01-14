@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:woki_partner/features/reserva/application/get_list_reservas.dart';
 import 'package:woki_partner/features/reserva/application/usecase.dart';
+import 'package:woki_partner/features/reserva/domain/entities/grupo_reservas.dart';
 
 import '../../../domain/entities/reserva.dart';
 
@@ -16,7 +17,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
       final failureOrReserva = await getLisTReservas.call(NoParams());
       failureOrReserva.fold(
           (l) => null,
-          (reservas) => emit(const ReservasState().copyWith(listaReservas: reservas)));
+          (reservas) => emit(const ReservasState().copyWith(listaReservasAgrupadas: reservas)));
      
     });
   }

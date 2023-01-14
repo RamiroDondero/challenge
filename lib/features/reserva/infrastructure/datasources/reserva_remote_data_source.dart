@@ -8,7 +8,7 @@ import '../models/reserva_model.dart';
 abstract class ReservaRemoteDataSource {
   /// vamos a llamar al backend por peticion http
   ///
-  /// en caso de error arroja [ServerException]
+  /// en caso de error arroja [ServerException]E
   Future<List<ReservaModel>> getListReserva();
 }
 
@@ -16,12 +16,14 @@ class ReservaRemoteDataSourceImpl implements ReservaRemoteDataSource {
   @override
   Future<List<ReservaModel>> getListReserva() {
     try {
-      final resp =  File('test/fixtures/datos_prueba_tecnica.json').readAsStringSync();
+      final resp =
+          File('test/fixtures/datos_prueba_tecnica.json').readAsStringSync();
       final List decoded = json.decode(resp);
       final lista = decoded.map((e) => ReservaModel.fromMap(e)).toList();
 
       return Future.value(lista);
     } catch (e) {
+      print(e);
       return Future.value([]);
     }
   }
