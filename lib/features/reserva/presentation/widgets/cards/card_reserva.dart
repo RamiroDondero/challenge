@@ -126,7 +126,7 @@ class _TituloCard extends StatelessWidget {
           const SizedBox(width: 5),
 
           const Text('12:00 hs', style: TextStyle(fontSize: 12)),
-          
+
         ],
       );
 }
@@ -185,11 +185,17 @@ class _Contenido extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        LineText(Icons.phone, tel),
+        tel.isEmpty
+        ?const SizedBox()
+        :LineText(Icons.phone, tel),
         const SizedBox(height: 5),
-        LineText(Icons.email, email),
+        email.isEmpty
+        ?const SizedBox()
+        :LineText(Icons.email, email),
         const SizedBox(height: 5),
-        LineText(CupertinoIcons.chat_bubble_text, comentario),
+        comentario.isEmpty
+        ?const SizedBox()
+        :LineText(CupertinoIcons.chat_bubble_text, comentario),
       ],
     );
   }
