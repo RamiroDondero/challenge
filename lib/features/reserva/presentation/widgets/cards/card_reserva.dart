@@ -35,7 +35,7 @@ class CardReserva extends StatefulWidget {
 }
 
 class _CardReservaState extends State<CardReserva> {
-  bool show = true;
+  bool show = false;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,9 @@ class _CardReservaState extends State<CardReserva> {
               )
               :const SizedBox(),
 
-              const SizedBox(height: 10),
+              show == true
+              ?const SizedBox(height: 10)
+              :const SizedBox(),
 
               show == true
               ?_Opciones()
