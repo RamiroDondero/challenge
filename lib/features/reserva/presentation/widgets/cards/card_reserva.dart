@@ -12,9 +12,9 @@ class CardReserva extends StatefulWidget {
   final int numeroPersonas;
   final String telefonoReserva;
   final String comentario;
-  final String hora;
   final String email;
-  final int state;
+  final bool checkAndDiscount;
+  final Widget horaOespera;
 
   const CardReserva({
     super.key,
@@ -25,9 +25,9 @@ class CardReserva extends StatefulWidget {
     required this.numeroPersonas,
     required this.telefonoReserva,
     required this.comentario,
-    required this.hora,
     required this.email,
-    required this.state,
+    required this.checkAndDiscount,
+    required this.horaOespera,
   });
 
   @override
@@ -42,10 +42,11 @@ class _CardReservaState extends State<CardReserva> {
     return GestureDetector(
       onTap: () {
         show = !show;
-        setState(() { });
+        setState(() {});
       },
       child: AnimatedContainer(
           height: show == true ? 224 : 100,
+          width: 400,
           margin: const EdgeInsets.only(bottom: 3, top: 4),
           decoration: CustomThemeData.sombrasTarjetas,
           padding:
@@ -55,43 +56,29 @@ class _CardReservaState extends State<CardReserva> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _TituloCard(
+                horaOespera: widget.horaOespera,
                 nombre: widget.nombre,
                 numeroPersonas: widget.numeroPersonas,
-                hora: widget.hora,
                 comentario: widget.comentario,
-                state: widget.state,
+                checkAndDiscount: widget.checkAndDiscount,
               ),
-
-              const SizedBox(height: 10),
-
+              const SizedBox(height: 10), 
               _Asignaciones(
                 ubicacion: widget.ubicaion,
                 carrito: widget.carrito,
                 discapacitado: widget.discapacitado,
               ),
-
               const SizedBox(height: 10),
-
-              show == true
-              ?_Contenido(
-                tel: widget.telefonoReserva,
-                email: widget.email,
-                comentario: widget.comentario,
-              )
-              :const SizedBox(),
-
-              show == true
-              ?const SizedBox(height: 10)
-              :const SizedBox(),
-
-              show == true
-              ?_Opciones()
-              :const SizedBox(),
-
-              show == true
-              ?const SizedBox(height: 10)
-              :const SizedBox(),
-
+              // show == true
+              //     ? _Contenido(
+              //         tel: widget.telefonoReserva,
+              //         email: widget.email,
+              //         comentario: widget.comentario,
+              //       )
+              //     : const SizedBox(),
+             const SizedBox(height: 10),
+              // show == true ? _Opciones() : const SizedBox(),
+              // show == true ? const SizedBox(height: 10) : const SizedBox(),
               Container(width: 67, height: 2, color: CustomThemeData.greyLines)
             ],
           )),
@@ -103,35 +90,35 @@ class _TituloCard extends StatelessWidget {
   const _TituloCard(
       {required this.nombre,
       required this.numeroPersonas,
-      required this.hora,
+      required this.horaOespera,
       required this.comentario,
-      required this.state});
+      required this.checkAndDiscount});
 
   final String nombre;
   final int numeroPersonas;
-  final String hora;
   final String comentario;
-  final int state;
+  final bool checkAndDiscount;
+  final Widget horaOespera;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [_margenIzq(state, comentario), _margenDerecho()],
+      children: [_margenIzq(), _margenDerecho()],
     );
   }
 
-  Widget _margenIzq(int state, String comentario) {
+  Widget _margenIzq() {
     return Row(
       children: [
         Text(nombre, style: CustomThemeData.nombreUsuario),
         const SizedBox(width: 3),
-        state == 5
+        checkAndDiscount == true
             ? const CustomIcon(CupertinoIcons.checkmark_seal,
                 color: CustomThemeData.check)
             : const SizedBox(),
         const SizedBox(width: 3),
-        state == 5
+        checkAndDiscount == true
             ? const CustomIcon(CupertinoIcons.percent, color: Colors.red)
             : const SizedBox(),
         const SizedBox(width: 3),
@@ -152,7 +139,7 @@ class _TituloCard extends StatelessWidget {
           const SizedBox(width: 5),
           const CustomIcon(Icons.calendar_today_outlined),
           const SizedBox(width: 5),
-          const Text('12:00 hs', style: TextStyle(fontSize: 12)),
+          horaOespera,
         ],
       );
 }
@@ -212,9 +199,7 @@ class _Contenido extends StatelessWidget {
     return Column(
       children: [
         tel.isEmpty ? const SizedBox() : LineText(Icons.phone, tel),
-        const SizedBox(height: 5),
         email.isEmpty ? const SizedBox() : LineText(Icons.email, email),
-        const SizedBox(height: 5),
         comentario.isEmpty
             ? const SizedBox()
             : LineText(CupertinoIcons.chat_bubble_text, comentario),

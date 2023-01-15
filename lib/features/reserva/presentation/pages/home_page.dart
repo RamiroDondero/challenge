@@ -1,6 +1,7 @@
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:woki_partner/features/reserva/presentation/pages/lista_espera.dart';
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,10 +18,17 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   const _AddButton(),
+
                   const SizedBox(height: 15),
+
                   _BotonesEstadoReserva(),
+
                   const SizedBox(height: 15),
-                  _ListaReservas(state)
+
+                  state.currentPage == 1
+                  ? const ListaEsperaScreen()
+                  :_ListaReservas(state)
+
                 ],
               ),
             ),

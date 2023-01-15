@@ -22,6 +22,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
       required this.getLisTReservas})
       : super(const ReservasState(
             listaReservas: [], listaReservasAgrupadas: [])) {
+              
     on<LoadingEvent>((event, emit) async {
       final failureOrReserva = await getLisTReservas.call(NoParams());
       failureOrReserva.fold((l) => null, (reservas) {

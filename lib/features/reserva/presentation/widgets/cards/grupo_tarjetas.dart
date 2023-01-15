@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:woki_partner/features/reserva/domain/entities/grupo_reservas.dart';
+
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
 import '../../../../../core/custom_theme_data.dart';
@@ -64,10 +66,13 @@ class _GrupoDeTarjetas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+  
     return Column(
         children: listaReservas
             .map((reserva) => CardReserva(
-                state: reserva.state ,
+                horaOespera: const Text('12:00hs', style: TextStyle(fontSize: 12)),
+                checkAndDiscount: reserva.state == 5 ? true : false,
                 nombre: reserva.clientData[0].name,
                 ubicaion: reserva.sector.toString(),
                 carrito: true,
@@ -75,7 +80,6 @@ class _GrupoDeTarjetas extends StatelessWidget {
                 numeroPersonas: reserva.quantity,
                 telefonoReserva: reserva.clientData[0].phone,
                 comentario: reserva.comment,
-                hora: reserva.day,
                 email: reserva.clientData[0].email))
             .toList());
   }
