@@ -8,14 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<ReservasBloc>(context);
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(bloc.state.noConcurrieron);
-           print(bloc.state.reservasVivas);
-        },
-      ),
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
           return SafeArea(
@@ -51,12 +44,12 @@ class _BotonesEstadoReserva extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<ReservasBloc>(context);
-  
-    final List<Map<String,dynamic>> botones = [
-      {'text': 'RESERVAS' , 'cant': bloc.state.reservasVivas },
-      {'text': 'ESPERA' , 'cant': bloc.state.cantEnListaEspera },
-      {'text': 'NO VINO' , 'cant': bloc.state.noConcurrieron },
-      {'text': 'INGRESADOS' , 'cant': bloc.state.ingreasadas },
+
+    final List<Map<String, dynamic>> botones = [
+      {'text': 'RESERVAS', 'cant': bloc.state.reservasVivas},
+      {'text': 'ESPERA', 'cant': bloc.state.cantEnListaEspera},
+      {'text': 'NO VINO', 'cant': bloc.state.noConcurrieron},
+      {'text': 'INGRESADOS', 'cant': bloc.state.ingreasadas},
     ];
 
     return SingleChildScrollView(
@@ -68,6 +61,7 @@ class _BotonesEstadoReserva extends StatelessWidget {
               (index) => GestureDetector(
                     onTap: (() {
                       bloc.add(ChangePageEvent(index));
+                      bloc.add(ListUpdateEvent());
                     }),
                     child: StateButton(
                         text: botones[index]['text'],
@@ -98,6 +92,3 @@ class _ListaReservas extends StatelessWidget {
     );
   }
 }
-
-
-

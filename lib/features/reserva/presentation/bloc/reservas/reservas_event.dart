@@ -13,3 +13,5 @@ class ChangePageEvent extends ReservasEvent {
   final int page;
   const ChangePageEvent(this.page);
 }
+
+class ListUpdateEvent extends ReservasEvent {}
