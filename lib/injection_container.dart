@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:woki_partner/features/reserva/application/get_cant_reservas.dart';
+import 'package:woki_partner/features/reserva/application/get_list_grupo_reservas.dart';
 import 'package:woki_partner/features/reserva/application/get_list_reservas.dart';
 import 'package:woki_partner/features/reserva/domain/repositories/reserva_repository.dart';
 import 'package:woki_partner/features/reserva/infrastructure/repositories/reserva_respository_impl.dart';
@@ -9,7 +11,7 @@ import 'features/reserva/infrastructure/datasources/reserva_remote_data_source.d
 
 final sl = GetIt.instance;
 
-Future<void> init() async  {
+Future<void> init() async {
   // ! Feature - Reservas
   initFeatures();
   // ! Core
@@ -17,11 +19,15 @@ Future<void> init() async  {
 }
 
 void initFeatures() {
-  sl.registerFactory(() => ReservasBloc(getLisTReservas: sl()));
+  sl.registerFactory(() => ReservasBloc(
+      getLisTReservas: sl(),
+      getListGrupoReservas: sl(),
+      getCantidadReservas: sl()));
 
   //useCases
   sl.registerLazySingleton(() => GetLisTReservas(repository: sl()));
-
+  sl.registerLazySingleton(() => const GetListGrupoReservas());
+  sl.registerLazySingleton(() => const GetCantReservas());
   //repository
   sl.registerLazySingleton<ReservaRepository>(
       () => ReservaRepositoryImpl(dataSource: sl()));

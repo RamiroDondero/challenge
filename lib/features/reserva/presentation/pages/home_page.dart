@@ -1,10 +1,8 @@
-import 'package:woki_partner/features/reserva/domain/entities/reserva.dart';
+
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
-
-import '../../../user/domain/entity/client_data.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,7 +19,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   const _AddButton(),
                   const SizedBox(height: 15),
-                  const _BotonesEstadoReserva(),
+                  _BotonesEstadoReserva(state),
                   const SizedBox(height: 15),
                   _ListaReservas(state)
                 ],
@@ -44,7 +42,9 @@ class _AddButton extends StatelessWidget {
 }
 
 class _BotonesEstadoReserva extends StatelessWidget {
-  const _BotonesEstadoReserva();
+  final ReservasState state;
+
+  const _BotonesEstadoReserva(this.state);
 
   @override
   Widget build(BuildContext context) {
@@ -64,24 +64,20 @@ class _BotonesEstadoReserva extends StatelessWidget {
 
 class _ListaReservas extends StatelessWidget {
   final ReservasState state;
-
   const _ListaReservas(this.state);
 
   @override
   Widget build(BuildContext context) {
-    final listaAgrupada = state.listaReservasAgrupadas;
-
     return Expanded(
       child: ListView.builder(
-        itemCount: listaAgrupada.length,
+        itemCount: state.listaReservasAgrupadas.length,
         itemBuilder: (BuildContext context, int index) {
-                 
-          return listaAgrupada[index].reservas.isEmpty
-           ? const SizedBox()
-           :GrupoTarjetas(grupoReservas: listaAgrupada[index]);
+          return state.listaReservasAgrupadas[index].reservas.isEmpty
+              ? const SizedBox()
+              : GrupoTarjetas(
+                  grupoReservas: state.listaReservasAgrupadas[index]);
         },
       ),
     );
   }
 }
-

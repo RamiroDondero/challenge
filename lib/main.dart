@@ -32,9 +32,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final reservasBloc = BlocProvider.of<ReservasBloc>(context);
-    reservasBloc.add(GetListReservasEvent());
-
+   
     return  MaterialApp(
       theme: ThemeData(fontFamily: 'Poppins'), 
       debugShowCheckedModeBanner: false,

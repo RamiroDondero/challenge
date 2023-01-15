@@ -7,5 +7,6 @@ abstract class ReservasEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class LoadingEvent extends ReservasEvent {}
 
-class GetListReservasEvent extends ReservasEvent{}
+
