@@ -25,11 +25,9 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
     on<LoadingEvent>((event, emit) async {
       final failureOrReserva = await getLisTReservas.call(NoParams());
       failureOrReserva.fold((l) => null, (reservas) {
-        final listaGrupoReservas =
-            getListGrupoReservas.agruparReservas(reservas);
+        final listaGrupoReservas = getListGrupoReservas.agruparReservas(reservas, state.currentPage);
         final vivas = getCantidadReservas.getCantReservas(reservas, [4, 5]);
-        final noConcurrieron =
-            getCantidadReservas.getCantReservas(reservas, [6]);
+        final noConcurrieron = getCantidadReservas.getCantReservas(reservas, [6]);
         final ingresadas = getCantidadReservas.getCantReservas(reservas, [7]);
         
         emit(state.copyWith(
