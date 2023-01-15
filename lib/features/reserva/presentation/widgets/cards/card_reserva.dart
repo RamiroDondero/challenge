@@ -35,7 +35,7 @@ class CardReserva extends StatefulWidget {
 }
 
 class _CardReservaState extends State<CardReserva> {
-  bool show = true;
+  bool show = false;
 
   @override
   Widget build(BuildContext context) {

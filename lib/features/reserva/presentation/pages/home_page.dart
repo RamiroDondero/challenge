@@ -1,4 +1,3 @@
-
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +8,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<ReservasBloc>(context);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print(bloc.state.noConcurrieron);
+           print(bloc.state.reservasVivas);
+        },
+      ),
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
           return SafeArea(
@@ -19,7 +25,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   const _AddButton(),
                   const SizedBox(height: 15),
-                  _BotonesEstadoReserva(state),
+                  _BotonesEstadoReserva(),
                   const SizedBox(height: 15),
                   _ListaReservas(state)
                 ],
@@ -42,22 +48,33 @@ class _AddButton extends StatelessWidget {
 }
 
 class _BotonesEstadoReserva extends StatelessWidget {
-  final ReservasState state;
-
-  const _BotonesEstadoReserva(this.state);
-
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<ReservasBloc>(context);
+  
+    final List<Map<String,dynamic>> botones = [
+      {'text': 'RESERVAS' , 'cant': bloc.state.reservasVivas },
+      {'text': 'ESPERA' , 'cant': bloc.state.cantEnListaEspera },
+      {'text': 'NO VINO' , 'cant': bloc.state.noConcurrieron },
+      {'text': 'INGRESADOS' , 'cant': bloc.state.ingreasadas },
+    ];
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            StateButton(text: 'RESERVAS', selected: true),
-            StateButton(text: 'ESPERA', selected: false),
-            StateButton(text: 'NO VINO', selected: false),
-            StateButton(text: 'INGRESADOS', selected: false),
-          ]),
+          children: List.generate(
+              4,
+              (index) => GestureDetector(
+                    onTap: (() {
+                      bloc.add(ChangePageEvent(index));
+                    }),
+                    child: StateButton(
+                        text: botones[index]['text'],
+                        cant: botones[index]['cant'],
+                        selected:
+                            bloc.state.currentPage == index ? true : false),
+                  ))),
     );
   }
 }
@@ -81,3 +98,6 @@ class _ListaReservas extends StatelessWidget {
     );
   }
 }
+
+
+

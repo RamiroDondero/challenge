@@ -25,10 +25,13 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
     on<LoadingEvent>((event, emit) async {
       final failureOrReserva = await getLisTReservas.call(NoParams());
       failureOrReserva.fold((l) => null, (reservas) {
-        final listaGrupoReservas = getListGrupoReservas.agruparReservas(reservas);
+        final listaGrupoReservas =
+            getListGrupoReservas.agruparReservas(reservas);
         final vivas = getCantidadReservas.getCantReservas(reservas, [4, 5]);
-        final noConcurrieron = getCantidadReservas.getCantReservas(reservas, [6]);
+        final noConcurrieron =
+            getCantidadReservas.getCantReservas(reservas, [6]);
         final ingresadas = getCantidadReservas.getCantReservas(reservas, [7]);
+        
         emit(state.copyWith(
             reservasVivas: vivas,
             noConcurrieron: noConcurrieron,
@@ -38,8 +41,10 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
       });
     });
 
+    on<ChangePageEvent>((event, emit) {
+      emit(state.copyWith(currentPage: event.page));
+    });
+
     add(LoadingEvent());
   }
 }
-
-

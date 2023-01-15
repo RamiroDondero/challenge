@@ -10,27 +10,33 @@ class ReservasState extends Equatable {
   final int noConcurrieron;
 
   const ReservasState(
-      {
-      this.reservasVivas = 0,
+      {this.reservasVivas = 0,
       this.cantEnListaEspera = 0,
-      this.noConcurrieron = 0 ,
-      this.ingreasadas = 0,  
+      this.noConcurrieron = 0,
+      this.ingreasadas = 0,
       this.currentPage = 0,
       required this.listaReservasAgrupadas,
-      required this.listaReservas
-      });
+      required this.listaReservas});
 
   @override
-  List<Object> get props => [listaReservasAgrupadas, listaReservas , currentPage, ingreasadas, noConcurrieron,cantEnListaEspera,reservasVivas];
+  List<Object> get props => [
+        listaReservasAgrupadas,
+        listaReservas,
+        currentPage,
+        ingreasadas,
+        noConcurrieron,
+        cantEnListaEspera,
+        reservasVivas
+      ];
 
   ReservasState copyWith(
           {int? currentPage,
-           int? reservasVivas,
-           int? cantEnListaEspera,
-           int? ingreasadas,
-           int? noConcurrieron,
-           List<Reserva>? listaReservas,
-           List<GrupoReservas>? listaReservasAgrupadas}) =>
+          int? reservasVivas,
+          int? cantEnListaEspera,
+          int? ingreasadas,
+          int? noConcurrieron,
+          List<Reserva>? listaReservas,
+          List<GrupoReservas>? listaReservasAgrupadas}) =>
       ReservasState(
           reservasVivas: reservasVivas ?? this.reservasVivas,
           cantEnListaEspera: cantEnListaEspera ?? this.cantEnListaEspera,
@@ -39,5 +45,5 @@ class ReservasState extends Equatable {
           currentPage: currentPage ?? this.currentPage,
           listaReservas: listaReservas ?? this.listaReservas,
           listaReservasAgrupadas:
-          listaReservasAgrupadas ?? this.listaReservasAgrupadas);
+              listaReservasAgrupadas ?? this.listaReservasAgrupadas);
 }

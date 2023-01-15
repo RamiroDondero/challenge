@@ -9,4 +9,7 @@ abstract class ReservasEvent extends Equatable {
 
 class LoadingEvent extends ReservasEvent {}
 
-
+class ChangePageEvent extends ReservasEvent {
+  final int page;
+  const ChangePageEvent(this.page);
+}
