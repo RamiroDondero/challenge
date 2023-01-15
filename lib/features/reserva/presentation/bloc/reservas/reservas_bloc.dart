@@ -20,8 +20,8 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
       {required this.getCantidadReservas,
       required this.getListGrupoReservas,
       required this.getLisTReservas})
-      : super(const ReservasState(
-            listaReservas: [], listaReservasAgrupadas: [])) {
+      : super( ReservasState(
+            listaReservas: const [], listaReservasAgrupadas: const [])) {
               
     on<LoadingEvent>((event, emit) async {
       final failureOrReserva = await getLisTReservas.call(NoParams());

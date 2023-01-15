@@ -14,6 +14,8 @@ class CardEspera extends StatelessWidget {
       children: [
         const Positioned(
           top: 10,
+          left: 0,
+          right: 0,
           child: CardReserva(
               nombre: 'nombre',
               ubicaion: 'ubicacion',
@@ -36,7 +38,7 @@ class CardEspera extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: 400,
+          width: double.infinity,
           height: 240,
         )
       ],
