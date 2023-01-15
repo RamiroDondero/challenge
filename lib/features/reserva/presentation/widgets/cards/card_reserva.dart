@@ -46,8 +46,6 @@ class _CardReservaState extends State<CardReserva> {
       },
       child: AnimatedContainer(
           height: show == true ? 224 : 100,
-          // width: 400,
-          // width: double.infinity,
           margin: const EdgeInsets.only(bottom: 3, top: 4),
           decoration: CustomThemeData.sombrasTarjetas,
           padding:

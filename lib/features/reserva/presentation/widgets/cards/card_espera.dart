@@ -12,6 +12,11 @@ class CardEspera extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
+        Container(
+          color: Colors.red.withOpacity(0.4),
+          width: double.infinity,
+          height: 234
+        ),
         const Positioned(
           top: 10,
           left: 0,
@@ -37,10 +42,6 @@ class CardEspera extends StatelessWidget {
             child: Text('$orden'),
           ),
         ),
-        const SizedBox(
-          width: double.infinity,
-          height: 240,
-        )
       ],
     );
   }
