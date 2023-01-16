@@ -22,14 +22,15 @@ class FormEspera extends StatelessWidget {
           _inputStyle(_Nota()),
           _inputStyle(_Sector()),
           _inputStyle(_Demora()),
-          _submit()
+          _submit(),
+         
         ],
       ),
     );
   }
 
   Widget _divider() => Container(width: 60, height: 3, color: CustomThemeData.greyLines);
-
+  
   Widget _title() {
     
     return Row(

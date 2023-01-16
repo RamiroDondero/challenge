@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:woki_partner/core/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
-import 'package:woki_partner/features/reserva/presentation/pages/home_page.dart';
-import 'features/reserva/presentation/widgets/cards/card_reserva.dart';
+import 'features/reserva/presentation/widgets/widgets.dart';
+import 'features/reserva/presentation/pages/home_page.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Poppins'),
+      theme: CustomThemeData.customTheme,
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: const HomePage(),
@@ -41,42 +41,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class TestScreen extends StatelessWidget {
-   
   const TestScreen({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: CardReserva(
-            nombre: 'nombre',
-            sector: 'ubicaion',
-            personas: 9,
-            telefono: 'telefonoReserva',
-            checkAndDiscount: true,
-            horaOespera: Text('hola'),
-            bubble: true,
-            ),
-        ),
-      )
+   
+
+    return const Scaffold(
+        body: FormListaEspera()
     );
   }
 }
-
-
-
-
-
-// Center(
-//         child: Stack(
-//           alignment: Alignment.centerLeft,
-//           children: [
-//               Container(color: Colors.red , height: 120,),
-//               Positioned( top: 15, left: 15, child: Container(color: Colors.blue, width: 100 , height: 100,)),
-//               Positioned( top: 5, left: 8, child: CircleAvatar(radius: 12)),
-//             ],),
-//       ),

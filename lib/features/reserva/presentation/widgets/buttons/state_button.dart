@@ -23,9 +23,9 @@ class StateButton extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(16)));
 
     return AnimatedContainer(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       alignment: Alignment.center,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
       height: 30,
       decoration: boxDecoration,
       duration: const Duration(milliseconds: 200),

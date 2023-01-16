@@ -13,23 +13,56 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
           return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                children: [
-                  const _AddButton(),
-                  const SizedBox(height: 15),
-                  _BotonesEstadoReserva(),
-                  const SizedBox(height: 15),
-                  state.currentPage == 1
-                      ? _ListaEspera()
-                      : _ListaReservas(state)
-                ],
-              ),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: _MenuHome(state),
+                ),
+                 const _FormDraggable()
+                 ],
             ),
           );
         },
       ),
+    );
+  }
+} 
+
+class _FormDraggable extends StatelessWidget {
+  const _FormDraggable();
+
+  @override
+  Widget build(BuildContext context) {
+    return DraggableScrollableSheet(
+      initialChildSize: 0.89,
+      minChildSize: 0.0,
+      maxChildSize: 0.89,
+      builder: (BuildContext context, ScrollController scrollController) {
+        return Container(
+          decoration: CustomThemeData.formDraggable,
+          child: const FormListaEspera()
+        );
+      },
+    );
+  }
+}
+
+class _MenuHome extends StatelessWidget {
+  final ReservasState state;
+
+  const _MenuHome(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const _AddButton(),
+        const SizedBox(height: 15),
+        _BotonesEstadoReserva(),
+        const SizedBox(height: 15),
+        state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
+      ],
     );
   }
 }
@@ -112,15 +145,19 @@ class _ListaEspera extends StatelessWidget {
             height: size * 0.7,
             child: SingleChildScrollView(
               child: Column(
-                children: List.generate(lista.length, (index) => CardReserva(
-                  nombre: lista[index]['nombre'],
-                  sector: lista[index]['sector'],
-                  personas: lista[index]['personas'],
-                  telefono: lista[index]['telefono'],
-                  horaOespera: Text('Demora ${lista[index]['demora']} min' , style: CustomThemeData.subtitle),
-                  bubble: true,
-                  ))
-              ),
+                  children: List.generate(
+                      lista.length,
+                      (index) => CardReserva(
+                            nombre: lista[index]['nombre'],
+                            sector: lista[index]['sector'],
+                            personas: lista[index]['personas'],
+                            telefono: lista[index]['telefono'],
+                            horaOespera: Text(
+                                'Demora ${lista[index]['demora']} min',
+                                style: CustomThemeData.subtitle),
+                            bubble: true,
+                            bubbleNum: index + 1,
+                          ))),
             ))
       ],
     );

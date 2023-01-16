@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomThemeData {
+  static final ThemeData customTheme = ThemeData(
+      fontFamily: 'Poppins',
+      inputDecorationTheme: const InputDecorationTheme(
+        floatingLabelStyle: TextStyle(color: primaryColor),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: greyLines),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: greyLines),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+      ));
+
   // COLOR
   static const Color primaryColor = Color(0xff0B4762);
   static const Color dark = Color(0xff041C32);
@@ -48,6 +60,12 @@ class CustomThemeData {
       border: Border.all(color: CustomThemeData.greyLines),
       borderRadius: BorderRadius.circular(10));
 
+  static BoxDecoration formDraggable = const BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30), topRight: Radius.circular(30)));
+
+  // BUTTON STYLE
   static ButtonStyle buttonSubmitStyle = ButtonStyle(
       minimumSize: MaterialStateProperty.all(const Size(double.infinity, 50)),
       backgroundColor: MaterialStateProperty.all(CustomThemeData.primaryColor));
