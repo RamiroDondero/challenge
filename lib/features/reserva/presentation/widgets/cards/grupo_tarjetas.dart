@@ -74,11 +74,11 @@ class _GrupoDeTarjetas extends StatelessWidget {
                 horaOespera: const Text('12:00hs', style: TextStyle(fontSize: 12)),
                 checkAndDiscount: reserva.state == 5 ? true : false,
                 nombre: reserva.clientData[0].name,
-                ubicaion: reserva.sector.toString(),
+                sector: reserva.sector.toString(),
                 carrito: true,
                 discapacitado: false,
-                numeroPersonas: reserva.quantity,
-                telefonoReserva: reserva.clientData[0].phone,
+                personas: reserva.quantity,
+                telefono: reserva.clientData[0].phone,
                 comentario: reserva.comment,
                 email: reserva.clientData[0].email))
             .toList());

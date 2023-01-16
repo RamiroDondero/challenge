@@ -44,13 +44,3 @@ class ReservaModel extends Reserva {
       };
 }
 
-
-
-//  clientData: json["clientData"] == null 
-//             ? [] 
-//             : List<ClientDataModel?>.from( json["clientData"]!.map((x) => ClientDataModel.fromMap(x))),
-
-
-// "clientData": clientData == null
-//             ? []
-//             : List<dynamic>.from(clientData!.map((x) => x!.toMap())),

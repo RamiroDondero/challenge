@@ -6,28 +6,30 @@ import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart'
 
 class CardReserva extends StatefulWidget {
   final String nombre;
-  final String ubicaion;
+  final String sector;
   final bool carrito;
   final bool discapacitado;
-  final int numeroPersonas;
-  final String telefonoReserva;
+  final int personas;
+  final String telefono;
   final String comentario;
   final String email;
   final bool checkAndDiscount;
   final Widget horaOespera;
+  final bool bubble;
 
   const CardReserva({
     super.key,
     required this.nombre,
-    required this.ubicaion,
-    required this.carrito,
-    required this.discapacitado,
-    required this.numeroPersonas,
-    required this.telefonoReserva,
-    required this.comentario,
-    required this.email,
-    required this.checkAndDiscount,
+    required this.sector,
+    required this.personas,
+    required this.telefono,
     required this.horaOespera,
+    this.checkAndDiscount = false,
+    this.comentario = '',
+    this.email = '',
+    this.carrito = false,
+    this.bubble = false,
+    this.discapacitado = false,
   });
 
   @override
@@ -39,6 +41,33 @@ class _CardReservaState extends State<CardReserva> {
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        _background(),
+
+        Positioned(top: 7, right: 0, left: 0, child: _card()),
+
+        widget.bubble == true 
+        ? const CircleAvatar( backgroundColor: CustomThemeData.primaryColor, radius: 12)
+        : const SizedBox()
+      ],
+    );
+  }
+
+  Widget _background() {
+    return GestureDetector(
+      onTap: () {
+        show = !show;
+        setState(() {});
+      },
+      child: AnimatedContainer(
+        height: show == true ? 240 : 116,
+        duration: const Duration(milliseconds: 90),
+      ),
+    );
+  }
+
+  Widget _card() {
     return GestureDetector(
       onTap: () {
         show = !show;
@@ -57,27 +86,27 @@ class _CardReservaState extends State<CardReserva> {
               _TituloCard(
                 horaOespera: widget.horaOespera,
                 nombre: widget.nombre,
-                numeroPersonas: widget.numeroPersonas,
+                numeroPersonas: widget.personas,
                 comentario: widget.comentario,
                 checkAndDiscount: widget.checkAndDiscount,
               ),
-              const SizedBox(height: 10), 
+              const SizedBox(height: 10),
               _Asignaciones(
-                ubicacion: widget.ubicaion,
+                ubicacion: widget.sector,
                 carrito: widget.carrito,
                 discapacitado: widget.discapacitado,
               ),
               const SizedBox(height: 10),
-              // show == true
-              //     ? _Contenido(
-              //         tel: widget.telefonoReserva,
-              //         email: widget.email,
-              //         comentario: widget.comentario,
-              //       )
-              //     : const SizedBox(),
-             const SizedBox(height: 10),
-              // show == true ? _Opciones() : const SizedBox(),
-              // show == true ? const SizedBox(height: 10) : const SizedBox(),
+              show == true
+                  ? _Contenido(
+                      tel: widget.telefono,
+                      email: widget.email,
+                      comentario: widget.comentario,
+                    )
+                  : const SizedBox(),
+              const SizedBox(height: 10),
+              show == true ? _Opciones() : const SizedBox(),
+              show == true ? const SizedBox(height: 10) : const SizedBox(),
               Container(width: 67, height: 2, color: CustomThemeData.greyLines)
             ],
           )),

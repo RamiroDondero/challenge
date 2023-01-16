@@ -1,7 +1,7 @@
+import 'package:woki_partner/core/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:woki_partner/features/reserva/presentation/pages/lista_espera.dart';
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,17 +18,12 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   const _AddButton(),
-
                   const SizedBox(height: 15),
-
                   _BotonesEstadoReserva(),
-
                   const SizedBox(height: 15),
-
                   state.currentPage == 1
-                  ? const ListaEsperaScreen()
-                  :_ListaReservas(state)
-
+                      ? _ListaEspera()
+                      : _ListaReservas(state)
                 ],
               ),
             ),
@@ -97,6 +92,37 @@ class _ListaReservas extends StatelessWidget {
                   grupoReservas: state.listaReservasAgrupadas[index]);
         },
       ),
+    );
+  }
+}
+
+class _ListaEspera extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final lista = BlocProvider.of<ReservasBloc>(context).state.listaEspera;
+    final size = MediaQuery.of(context).size.height;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Divider(),
+        const Text('Lista de Espera', style: CustomThemeData.horaGrupoReservas),
+        const Divider(),
+        SizedBox(
+            height: size * 0.7,
+            child: SingleChildScrollView(
+              child: Column(
+                children: List.generate(lista.length, (index) => CardReserva(
+                  nombre: lista[index]['nombre'],
+                  sector: lista[index]['sector'],
+                  personas: lista[index]['personas'],
+                  telefono: lista[index]['telefono'],
+                  horaOespera: Text('Demora ${lista[index]['demora']} min' , style: CustomThemeData.subtitle),
+                  bubble: true,
+                  ))
+              ),
+            ))
+      ],
     );
   }
 }
