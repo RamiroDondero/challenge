@@ -6,17 +6,20 @@ import '../widgets.dart';
 
 class Titulo extends StatelessWidget {
   const Titulo(
-      {super.key, required this.nombre,
+      {super.key,
+      required this.nombre,
       required this.numeroPersonas,
       required this.horaOespera,
       required this.comentario,
-      required this.checkAndDiscount});
+      required this.checkAndDiscount, 
+      required this.iconHoraOcalendario});
 
   final String nombre;
   final int numeroPersonas;
   final String comentario;
   final bool checkAndDiscount;
   final Widget horaOespera;
+  final Widget iconHoraOcalendario;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class Titulo extends StatelessWidget {
           const SizedBox(width: 5),
           const CircleAvatar(maxRadius: 2, backgroundColor: Colors.black),
           const SizedBox(width: 5),
-          const CustomIcon(Icons.calendar_today_outlined),
+          iconHoraOcalendario,
           const SizedBox(width: 5),
           horaOespera,
         ],

@@ -14,6 +14,7 @@ class CardReserva extends StatefulWidget {
   final String email;
   final bool checkAndDiscount;
   final Widget horaOespera;
+  final Widget iconHoraOcalendario;
   final bool bubble;
   final int bubbleNum;
 
@@ -30,7 +31,7 @@ class CardReserva extends StatefulWidget {
     this.bubble = false,
     this.carrito = false,
     this.discapacitado = false,
-    this.checkAndDiscount = false,
+    this.checkAndDiscount = false, required this.iconHoraOcalendario,
   });
 
   @override
@@ -45,17 +46,15 @@ class _CardReservaState extends State<CardReserva> {
     return Stack(
       children: [
         _background(),
-
         Positioned(top: 7, right: 0, left: 0, child: _card()),
-
-        widget.bubble == true 
-        ?  CircleAvatar( 
-          backgroundColor: CustomThemeData.primaryColor,
-          radius: 12 ,
-          child:  Text(
-            '${widget.bubbleNum}',
-            style: CustomThemeData.subtitle.copyWith(color: Colors.white)))
-        : const SizedBox()
+        widget.bubble == true
+            ? CircleAvatar(
+                backgroundColor: CustomThemeData.primaryColor,
+                radius: 12,
+                child: Text('${widget.bubbleNum}',
+                    style:
+                        CustomThemeData.subtitle.copyWith(color: Colors.white)))
+            : const SizedBox()
       ],
     );
   }
@@ -89,8 +88,8 @@ class _CardReservaState extends State<CardReserva> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               Titulo(
+                iconHoraOcalendario: widget.iconHoraOcalendario,
                 horaOespera: widget.horaOespera,
                 nombre: widget.nombre,
                 numeroPersonas: widget.personas,
@@ -98,15 +97,12 @@ class _CardReservaState extends State<CardReserva> {
                 checkAndDiscount: widget.checkAndDiscount,
               ),
               const SizedBox(height: 10),
-
               Preferences(
                 ubicacion: widget.sector,
                 carrito: widget.carrito,
                 discapacitado: widget.discapacitado,
               ),
-
               const SizedBox(height: 10),
-
               show == true
                   ? Contenido(
                       tel: widget.telefono,
@@ -114,19 +110,12 @@ class _CardReservaState extends State<CardReserva> {
                       comentario: widget.comentario,
                     )
                   : const SizedBox(),
-
               const SizedBox(height: 10),
-
               show == true ? const Opciones() : const SizedBox(),
-              
               show == true ? const SizedBox(height: 10) : const SizedBox(),
-              
               Container(width: 67, height: 2, color: CustomThemeData.greyLines)
             ],
           )),
     );
   }
 }
-
-
-

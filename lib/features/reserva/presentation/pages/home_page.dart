@@ -1,4 +1,5 @@
-import 'package:flutter/gestures.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:woki_partner/core/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
@@ -130,10 +131,11 @@ class _ListaEspera extends StatelessWidget {
                             personas: lista[index]['personas'],
                             telefono: lista[index]['telefono'],
                             horaOespera: Text(
-                                'Demora ${lista[index]['demora']} min',
+                                'Tiempo de espera ${lista[index]['demora']} min',
                                 style: CustomThemeData.subtitle),
                             bubble: true,
-                            bubbleNum: index + 1,
+                            bubbleNum: index + 1, 
+                            iconHoraOcalendario: const CustomIcon(CupertinoIcons.clock),
                           ))),
             ))
       ],

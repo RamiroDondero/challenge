@@ -80,7 +80,9 @@ class _GrupoDeTarjetas extends StatelessWidget {
                 personas: reserva.quantity,
                 telefono: reserva.clientData[0].phone,
                 comentario: reserva.comment,
-                email: reserva.clientData[0].email))
+                email: reserva.clientData[0].email,
+                iconHoraOcalendario:  const CustomIcon(Icons.calendar_today_outlined),
+                ))
             .toList());
   }
 }
