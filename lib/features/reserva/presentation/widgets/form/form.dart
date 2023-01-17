@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,6 +76,7 @@ class FormListaEspera extends StatelessWidget {
                     FocusScope.of(context).requestFocus(FocusNode());
                     if (!formKey.currentState!.validate()) return;
                     bloc.add(AddListaEsperaEvent(formValues));
+                    Navigator.pop(context);
                   },
                 )
               ],

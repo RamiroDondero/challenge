@@ -52,7 +52,10 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
 
     on<AddListaEsperaEvent>((event, emit) {
       final nuevaLista = [...state.listaEspera, event.reserva];
-      emit(state.copyWith(listaEspera: nuevaLista , cantEnListaEspera: state.cantEnListaEspera + 1));
+      emit(state.copyWith(
+        listaEspera: nuevaLista ,
+        currentPage: 1,
+        cantEnListaEspera: state.cantEnListaEspera + 1));
     });
 
     add(LoadingEvent());
