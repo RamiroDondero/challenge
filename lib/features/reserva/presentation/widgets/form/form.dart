@@ -1,5 +1,9 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 
 import '../../../../../core/custom_theme_data.dart';
 import '../widgets.dart';
@@ -10,76 +14,74 @@ class FormListaEspera extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    Map<String, dynamic> formValues = {'name': '', 'tel': '', 'nota': ''};
-
+    Map<String, dynamic> formValues = {
+      'nombre': '',
+      'telefono': '',
+      "personas": 1,
+      'comentario': '',
+      "sector": 'Adentro',
+      'demora': 0
+    };
+    final bloc = BlocProvider.of<ReservasBloc>(context);
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Form(
           key: formKey,
-          child: DraggableScrollableSheet(
-            initialChildSize: 0.88,
-            maxChildSize: 0.89,
-            minChildSize: 0.0,
-            expand: false,
-            builder: (BuildContext context, ScrollController scrollController) {
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                        width: 60, height: 3, color: CustomThemeData.greyLines),
-                    const SizedBox(height: 20),
-                    const _Title(),
-                    const SizedBox(height: 30),
-                    CustomInputField(
-                      labelText: 'NOMBRE*',
-                      hintText: 'Escribe tu nombre',
-                      formProperty: 'name',
-                      formValues: formValues,
-                    ),
-                    const SizedBox(height: 10),
-                    CustomInputField(
-                      labelText: 'TELEFONO',
-                      hintText: 'Escribe tu teléfono',
-                      formProperty: 'tel',
-                      formValues: formValues,
-                    ),
-                    const SizedBox(height: 10),
-                    const _InputStyle(child: _CantidadPersonas()),
-                    const SizedBox(height: 10),
-                    CustomInputField(
-                        labelText: 'AGREGAR NOTA',
-                        hintText: 'Agrega una nota sobre la reserva',
-                        formProperty: 'nota',
-                        formValues: formValues
-                    ),
-                    const SizedBox(height: 10),
-                    CustomInputField(
-                        formProperty: 'nota', formValues: formValues),
-                    const SizedBox(height: 10),
-                    CustomInputField(
-                        formProperty: 'nota', formValues: formValues),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                              CustomThemeData.primaryColor)),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 14),
-                        child: SizedBox(
-                            width: double.infinity,
-                            child:
-                                Center(child: Text('Agregar a lista espera'))),
-                      ),
-                      onPressed: () {
-                        FocusScope.of(context).requestFocus(FocusNode());
-                        if (!formKey.currentState!.validate()) return;
-                        print(formValues);
-                      },
-                    )
-                  ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                    width: 60, height: 3, color: CustomThemeData.greyLines),
+                const SizedBox(height: 20),
+                const _Title(),
+                const SizedBox(height: 30),
+                CustomInputField(
+                  validator: true,
+                  labelText: 'NOMBRE*',
+                  hintText: 'Escribe tu nombre',
+                  formProperty: 'nombre',
+                  formValues: formValues,
                 ),
-              );
-            },
+                const SizedBox(height: 10),
+                CustomInputField(
+                  labelText: 'TELEFONO',
+                  hintText: 'Escribe tu teléfono',
+                  formProperty: 'telefono',
+                  formValues: formValues,
+                ),
+                const SizedBox(height: 10),
+                const _InputStyle(child: _CantidadPersonas()),
+                const SizedBox(height: 10),
+                CustomInputField(
+                    labelText: 'AGREGAR NOTA',
+                    hintText: 'Agrega una nota sobre la reserva',
+                    formProperty: 'comentario',
+                    formValues: formValues),
+                const SizedBox(height: 10),
+                CustomInputField(
+                    formProperty: 'comentario', formValues: formValues),
+                const SizedBox(height: 10),
+                CustomInputField(
+                    formProperty: 'comentario', formValues: formValues),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          CustomThemeData.primaryColor)),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 14),
+                    child: SizedBox(
+                        width: double.infinity,
+                        child: Center(child: Text('Agregar a lista espera'))),
+                  ),
+                  onPressed: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    if (!formKey.currentState!.validate()) return;
+                    bloc.add(AddListaEsperaEvent(formValues));
+                  },
+                )
+              ],
+            ),
           )),
     );
   }

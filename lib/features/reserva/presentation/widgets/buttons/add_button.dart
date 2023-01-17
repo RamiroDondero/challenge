@@ -15,10 +15,19 @@ class AddButton extends StatelessWidget {
           context: context,
           builder: (context) {
             return Container(
-          decoration: CustomThemeData.formDraggable,
-          child:  const FormListaEspera()
+                decoration: CustomThemeData.formDraggable,
+                child: DraggableScrollableSheet(
+                  initialChildSize: 0.88,
+                  maxChildSize: 0.89,
+                  minChildSize: 0.0,
+                  expand: false,
+                  builder: (BuildContext context,
+                      ScrollController scrollController) {
+                    return const FormListaEspera();
+                  },
+                ));
+          },
         );
-          },);
       },
       child: Container(
         width: 50,

@@ -5,13 +5,16 @@ class CustomInputField extends StatelessWidget {
   final String? labelText;
   final String formProperty;
   final Map<String, dynamic> formValues;
+  final bool? validator;
 
-  const CustomInputField(
-      {super.key,
-      this.hintText = 'text',
-      this.labelText = 'TEXT',
-      required this.formProperty,
-      required this.formValues});
+  const CustomInputField({
+    super.key,
+    this.hintText,
+    this.labelText,
+    this.validator = false,
+    required this.formProperty,
+    required this.formValues,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,13 @@ class CustomInputField extends StatelessWidget {
         formValues[formProperty] = value;
       },
       validator: (value) {
-        if (value == null) return 'Este campo es requerido';
-        return value.length < 3 ? 'Mínimo 3 letras' : null;
+        if (validator == false) {
+          return null;
+        }else{
+        if (value == null) return '*Este campo es requerido.';
+        return value.length < 3 ? '*Este campo es requerido , min 3 caracteres.' : null;
+        }
+        
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(

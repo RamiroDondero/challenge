@@ -9,18 +9,15 @@ class ReservasState extends Equatable {
   final int ingreasadas;
   final int noConcurrieron;
 
-  final List<Map<String, dynamic>> listaEspera = [
-    {'nombre': 'ramiro' , 'telefono':'2235973940', "personas":2, 'comentario': 'hola' , "sector":'Patio' , 'demora': 5},
-    {'nombre': 'ramiro' , 'telefono':'2235973940', "personas":3, 'comentario': 'hola' , "sector":'Patio' , 'demora': 5},
-    
-  ];
+  final List<Map<String, dynamic>> listaEspera;
 
-   ReservasState(
+   const ReservasState(
       {this.reservasVivas = 0,
       this.cantEnListaEspera = 0,
       this.noConcurrieron = 0,
       this.ingreasadas = 0,
       this.currentPage = 0,
+      required this.listaEspera,
       required this.listaReservasAgrupadas,
       required this.listaReservas});
 
@@ -32,7 +29,8 @@ class ReservasState extends Equatable {
         ingreasadas,
         noConcurrieron,
         cantEnListaEspera,
-        reservasVivas
+        reservasVivas,
+        listaEspera
       ];
 
   ReservasState copyWith(
@@ -41,15 +39,16 @@ class ReservasState extends Equatable {
           int? cantEnListaEspera,
           int? ingreasadas,
           int? noConcurrieron,
+          List<Map<String, dynamic>>? listaEspera,
           List<Reserva>? listaReservas,
           List<GrupoReservas>? listaReservasAgrupadas}) =>
       ReservasState(
+          listaEspera: listaEspera ?? this.listaEspera,
           reservasVivas: reservasVivas ?? this.reservasVivas,
           cantEnListaEspera: cantEnListaEspera ?? this.cantEnListaEspera,
           ingreasadas: ingreasadas ?? this.ingreasadas,
           noConcurrieron: noConcurrieron ?? this.noConcurrieron,
           currentPage: currentPage ?? this.currentPage,
           listaReservas: listaReservas ?? this.listaReservas,
-          listaReservasAgrupadas:
-              listaReservasAgrupadas ?? this.listaReservasAgrupadas);
+          listaReservasAgrupadas:listaReservasAgrupadas ?? this.listaReservasAgrupadas);
 }

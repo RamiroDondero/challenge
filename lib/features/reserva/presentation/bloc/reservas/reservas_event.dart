@@ -15,3 +15,8 @@ class ChangePageEvent extends ReservasEvent {
 }
 
 class ListUpdateEvent extends ReservasEvent {}
+
+class AddListaEsperaEvent extends ReservasEvent {
+  final Map<String, dynamic> reserva;
+  const AddListaEsperaEvent(this.reserva);
+}
