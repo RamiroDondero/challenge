@@ -34,13 +34,16 @@ class _LineText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      // visualDensity: VisualDensity(vertical: ),
-      minVerticalPadding: 0,
-      dense: true,
-      minLeadingWidth: 0,
-      leading: Icon(icon, size: 12, color: Colors.grey),
-      title:   Text(text, maxLines: 2, style: const TextStyle(color: Colors.grey ,overflow: TextOverflow.ellipsis)),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Icon(icon, size: 12, color: Colors.grey),
+        ),
+        const SizedBox(width: 10),
+        Expanded(child: Text(text, maxLines: 2, style: const TextStyle(color: Colors.grey ,overflow: TextOverflow.ellipsis))),
+      ],
     );
   }
 }

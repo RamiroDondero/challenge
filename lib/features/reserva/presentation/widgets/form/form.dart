@@ -19,7 +19,7 @@ class FormListaEspera extends StatelessWidget {
       "personas": 1,
       'comentario': '',
       "sector": 'Adentro',
-      'demora': 20
+      'demora': 0
     };
 
     Map<int, dynamic> dia = {
@@ -61,7 +61,7 @@ class FormListaEspera extends StatelessWidget {
                   child: Container(
                       width: 60, height: 3, color: CustomThemeData.greyLines),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 const _Title(),
                 const SizedBox(height: 3),
                 Text('${dia[DateTime.now().weekday]}, ${DateTime.now().day} de ${mes[DateTime.now().month]} (Hoy)'),
