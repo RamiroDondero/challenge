@@ -12,8 +12,7 @@ class ReservasState extends Equatable {
   final List<Map<String, dynamic>> listaEspera = [
     {'nombre': 'ramiro' , 'telefono':'2235973940', "personas":2, 'comentario': 'hola' , "sector":'Patio' , 'demora': 5},
     {'nombre': 'ramiro' , 'telefono':'2235973940', "personas":3, 'comentario': 'hola' , "sector":'Patio' , 'demora': 5},
-    {'nombre': 'ramiro' , 'telefono':'2235973940', "personas":6, 'comentario': 'hola' , "sector":'Patio' , 'demora': 5},
-    {'nombre': 'ramiro' , 'telefono':'2235973940', "personas":9, 'comentario': 'hola' , "sector":'Patio' , 'demora': 5},
+    
   ];
 
    ReservasState(

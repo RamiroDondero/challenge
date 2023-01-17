@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:woki_partner/core/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,9 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
           return SafeArea(
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: _MenuHome(state),
-                ),
-                 const _FormDraggable()
-                 ],
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: _MenuHome(state),
             ),
           );
         },
@@ -28,25 +24,6 @@ class HomePage extends StatelessWidget {
     );
   }
 } 
-
-class _FormDraggable extends StatelessWidget {
-  const _FormDraggable();
-
-  @override
-  Widget build(BuildContext context) {
-    return DraggableScrollableSheet(
-      initialChildSize: 0.89,
-      minChildSize: 0.0,
-      maxChildSize: 0.89,
-      builder: (BuildContext context, ScrollController scrollController) {
-        return Container(
-          decoration: CustomThemeData.formDraggable,
-          child: const FormListaEspera()
-        );
-      },
-    );
-  }
-}
 
 class _MenuHome extends StatelessWidget {
   final ReservasState state;

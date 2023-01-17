@@ -12,51 +12,68 @@ class FormListaEspera extends StatelessWidget {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     Map<String, dynamic> formValues = {'name': '', 'tel': '', 'nota': ''};
 
-    return Center(
-        child: Padding(
+    return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            Container(width: 60, height: 3, color: CustomThemeData.greyLines),
-            const SizedBox(height: 20),
-            const _Title(),
-            const SizedBox(height: 30),
-            CustomInputField(
-              formProperty: 'name',
-              formValues: formValues,
-            ),
-            const SizedBox(height: 30),
-            CustomInputField(
-              formProperty: 'tel',
-              formValues: formValues,
-            ),
-            const SizedBox(height: 30),
-            const _InputStyle(child: _CantidadPersonas()),
-            const SizedBox(height: 30),
-            CustomInputField(formProperty: 'nota', formValues: formValues),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              style: const ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll(CustomThemeData.primaryColor)),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 14),
-                child: SizedBox(
-                    width: double.infinity,
-                    child: Center(child: Text('Agregar a lista espera'))),
-              ),
-              onPressed: () {
-                FocusScope.of(context).requestFocus(FocusNode());
-                if (!formKey.currentState!.validate()) return;
-                print(formValues);
-              },
-            )
-          ],
-        ),
-      ),
-    ));
+          key: formKey,
+          child: DraggableScrollableSheet(
+            initialChildSize: 0.88,
+            maxChildSize: 0.89,
+            minChildSize: 0.0,
+            expand: false,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                        width: 60, height: 3, color: CustomThemeData.greyLines),
+                    const SizedBox(height: 20),
+                    const _Title(),
+                    const SizedBox(height: 30),
+                    CustomInputField(
+                      formProperty: 'name',
+                      formValues: formValues,
+                    ),
+                    const SizedBox(height: 30),
+                    CustomInputField(
+                      formProperty: 'tel',
+                      formValues: formValues,
+                    ),
+                    const SizedBox(height: 30),
+                    const _InputStyle(child: _CantidadPersonas()),
+                    const SizedBox(height: 30),
+                    CustomInputField(
+                        formProperty: 'nota', formValues: formValues),
+                    const SizedBox(height: 30),
+                    CustomInputField(
+                        formProperty: 'nota', formValues: formValues),
+                    const SizedBox(height: 30),
+                    CustomInputField(
+                        formProperty: 'nota', formValues: formValues),
+                    const SizedBox(height: 30),
+                    ElevatedButton(
+                      style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              CustomThemeData.primaryColor)),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 14),
+                        child: SizedBox(
+                            width: double.infinity,
+                            child:
+                                Center(child: Text('Agregar a lista espera'))),
+                      ),
+                      onPressed: () {
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        if (!formKey.currentState!.validate()) return;
+                        print(formValues);
+                      },
+                    )
+                  ],
+                ),
+              );
+            },
+          )),
+    );
   }
 }
 
@@ -65,12 +82,14 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:  [
-          Text('Agregar a la lista de espera', style: CustomThemeData.formTitle),
-          const Icon(Icons.close, color: Colors.black),
-        ]);
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Text('Agregar a la lista de espera', style: CustomThemeData.formTitle),
+      GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.close, color: Colors.black)),
+    ]);
   }
 }
 
