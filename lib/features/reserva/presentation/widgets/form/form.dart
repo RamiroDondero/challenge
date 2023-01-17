@@ -34,23 +34,23 @@ class FormListaEspera extends StatelessWidget {
                       formProperty: 'name',
                       formValues: formValues,
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     CustomInputField(
                       formProperty: 'tel',
                       formValues: formValues,
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     const _InputStyle(child: _CantidadPersonas()),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     CustomInputField(
                         formProperty: 'nota', formValues: formValues),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     CustomInputField(
                         formProperty: 'nota', formValues: formValues),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     CustomInputField(
                         formProperty: 'nota', formValues: formValues),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
                     ElevatedButton(
                       style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(
