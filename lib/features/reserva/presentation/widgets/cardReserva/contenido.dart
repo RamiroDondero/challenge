@@ -7,7 +7,10 @@ class Contenido extends StatelessWidget {
   final String comentario;
 
   const Contenido(
-      {super.key, required this.tel, required this.email, required this.comentario});
+      {super.key,
+      required this.tel,
+      required this.email,
+      required this.comentario});
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +26,21 @@ class Contenido extends StatelessWidget {
   }
 }
 
-
 class _LineText extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const _LineText( this.icon, this.text, {super.key});
+  const _LineText(this.icon, this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: 12, color: Colors.grey),
-        const SizedBox(width: 5),
-        Text(text, maxLines: 8, style: const TextStyle(color: Colors.grey ,overflow: TextOverflow.ellipsis)),
-      ],
+    return ListTile(
+      minVerticalPadding: 0,
+      dense: true,
+      minLeadingWidth: 0,
+      leading: Icon(icon, size: 12, color: Colors.grey),
+      title:   Text(text, maxLines: 2, style: const TextStyle(color: Colors.grey ,overflow: TextOverflow.ellipsis)),
     );
   }
 }
+

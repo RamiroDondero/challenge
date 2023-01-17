@@ -130,6 +130,7 @@ class _ListaEspera extends StatelessWidget {
                             sector: lista[index]['sector'],
                             personas: lista[index]['personas'],
                             telefono: lista[index]['telefono'],
+                            comentario: lista[index]['comentario'],
                             horaOespera: Row(
                               children:[
                                 const Text('Tiempo de espera', style: CustomThemeData.subtitle),
