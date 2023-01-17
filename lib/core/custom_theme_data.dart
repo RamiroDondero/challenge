@@ -35,6 +35,10 @@ class CustomThemeData {
   static const TextStyle subtitle = TextStyle(
       color: CustomThemeData.dark, fontSize: 12, fontWeight: FontWeight.w500);
 
+
+  static const TextStyle demora = TextStyle(
+      color: Colors.red, fontSize: 12, fontWeight: FontWeight.w500);
+
   static const TextStyle nombreUsuario = TextStyle(
       color: CustomThemeData.dark, fontWeight: FontWeight.w700, fontSize: 14);
 
@@ -69,4 +73,10 @@ class CustomThemeData {
   static ButtonStyle buttonSubmitStyle = ButtonStyle(
       minimumSize: MaterialStateProperty.all(const Size(double.infinity, 50)),
       backgroundColor: MaterialStateProperty.all(CustomThemeData.primaryColor));
+
+  static ButtonStyle optionButtonselected = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(CustomThemeData.primaryColor));
+
+  static ButtonStyle optionButtonNoselected = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Colors.white));
 }

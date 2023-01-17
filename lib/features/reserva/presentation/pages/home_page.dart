@@ -130,9 +130,13 @@ class _ListaEspera extends StatelessWidget {
                             sector: lista[index]['sector'],
                             personas: lista[index]['personas'],
                             telefono: lista[index]['telefono'],
-                            horaOespera: Text(
-                                'Tiempo de espera ${lista[index]['demora']} min',
-                                style: CustomThemeData.subtitle),
+                            horaOespera: Row(
+                              children:[
+                                const Text('Tiempo de espera', style: CustomThemeData.subtitle),
+                                const SizedBox(width: 2),
+                                Text('${lista[index]['demora']} min',style: CustomThemeData.demora)
+                              ] 
+                            ),
                             bubble: true,
                             bubbleNum: index + 1, 
                             iconHoraOcalendario: const CustomIcon(CupertinoIcons.clock),

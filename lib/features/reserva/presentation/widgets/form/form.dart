@@ -18,7 +18,7 @@ class FormListaEspera extends StatelessWidget {
       "personas": 1,
       'comentario': '',
       "sector": 'Adentro',
-      'demora': 0
+      'demora': 20
     };
     final bloc = BlocProvider.of<ReservasBloc>(context);
     return Padding(
@@ -49,7 +49,8 @@ class FormListaEspera extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 _InputStyle(
-                    child: _CantidadPersonas(personas:'personas' ,  formValues: formValues)),
+                    child: _CantidadPersonas(
+                        personas: 'personas', formValues: formValues)),
                 const SizedBox(height: 10),
                 CustomInputField(
                     labelText: 'AGREGAR NOTA',
@@ -57,16 +58,20 @@ class FormListaEspera extends StatelessWidget {
                     formProperty: 'comentario',
                     formValues: formValues),
                 const SizedBox(height: 10),
-                CustomInputField(
-                    formProperty: 'comentario', formValues: formValues),
+                const _Preferences(
+                  icon: CustomThemeData.tableRestaurantIcon,
+                  opciones: ['Terraza','Adentro','Barra'],
+                  titulo: 'SECTOR'
+                   ),
                 const SizedBox(height: 10),
-                CustomInputField(
-                    formProperty: 'comentario', formValues: formValues),
+                const _Preferences(
+                  icon: CupertinoIcons.clock,
+                  opciones: ['Sin Demora','5 min','10 min', '20 min'],
+                  titulo: 'DEMORA'
+                   ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                  style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          CustomThemeData.primaryColor)),
+                  style: CustomThemeData.buttonSubmitStyle,
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 14),
                     child: SizedBox(
@@ -173,4 +178,47 @@ class _CantidadPersonasState extends State<_CantidadPersonas> {
           )
         ],
       );
+}
+
+class _Preferences extends StatelessWidget {
+  final String titulo;
+  final IconData icon;
+  final List<String> opciones;
+
+  const _Preferences({
+    required this.titulo,
+    required this.icon,
+    required this.opciones
+    });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 10 , left: 10),
+      decoration: CustomThemeData.inputStyle,
+      child: Column(
+        children: [
+          ListTile( 
+            minLeadingWidth: 0,
+            dense:true ,
+            iconColor: CustomThemeData.primaryColor,
+            leading: Icon(icon , size: 16),
+            title: Text(titulo ,
+            style: CustomThemeData.subtitle
+            )),
+          Row(
+            children: List.generate(opciones.length, (index) => 
+              Padding(
+                padding: const  EdgeInsets.only(right: 10),
+                child: ElevatedButton(
+                  onPressed: (){},
+                  style: CustomThemeData.optionButtonselected ,
+                  child: Text(opciones[index])),
+              )
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }
