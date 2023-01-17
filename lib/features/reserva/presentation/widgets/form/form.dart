@@ -22,7 +22,7 @@ class FormListaEspera extends StatelessWidget {
     };
     final bloc = BlocProvider.of<ReservasBloc>(context);
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20 , vertical: 10),
       child: Form(
           key: formKey,
           child: SingleChildScrollView(
