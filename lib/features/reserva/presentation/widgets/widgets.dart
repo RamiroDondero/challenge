@@ -8,7 +8,6 @@ export 'package:woki_partner/features/reserva/presentation/widgets/cardReserva/t
 export 'package:woki_partner/features/reserva/presentation/widgets/buttons/option_button.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/icons/custom_icon.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/groupCards/grupo_tarjetas.dart';
-export 'package:woki_partner/features/reserva/presentation/widgets/form/form_lista_espera.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/cardReserva/card_reserva.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/buttons/add_button.dart';
 export 'package:woki_partner/features/reserva/presentation/widgets/buttons/state_button.dart';

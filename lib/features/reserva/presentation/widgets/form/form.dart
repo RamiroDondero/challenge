@@ -31,11 +31,15 @@ class FormListaEspera extends StatelessWidget {
                     const _Title(),
                     const SizedBox(height: 30),
                     CustomInputField(
+                      labelText: 'NOMBRE*',
+                      hintText: 'Escribe tu nombre',
                       formProperty: 'name',
                       formValues: formValues,
                     ),
                     const SizedBox(height: 10),
                     CustomInputField(
+                      labelText: 'TELEFONO',
+                      hintText: 'Escribe tu teléfono',
                       formProperty: 'tel',
                       formValues: formValues,
                     ),
@@ -43,7 +47,11 @@ class FormListaEspera extends StatelessWidget {
                     const _InputStyle(child: _CantidadPersonas()),
                     const SizedBox(height: 10),
                     CustomInputField(
-                        formProperty: 'nota', formValues: formValues),
+                        labelText: 'AGREGAR NOTA',
+                        hintText: 'Agrega una nota sobre la reserva',
+                        formProperty: 'nota',
+                        formValues: formValues
+                    ),
                     const SizedBox(height: 10),
                     CustomInputField(
                         formProperty: 'nota', formValues: formValues),
@@ -85,9 +93,7 @@ class _Title extends StatelessWidget {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text('Agregar a la lista de espera', style: CustomThemeData.formTitle),
       GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
+          onTap: () => Navigator.pop(context),
           child: const Icon(Icons.close, color: Colors.black)),
     ]);
   }
