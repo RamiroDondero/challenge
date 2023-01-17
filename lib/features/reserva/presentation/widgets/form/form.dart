@@ -22,7 +22,7 @@ class FormListaEspera extends StatelessWidget {
     };
     final bloc = BlocProvider.of<ReservasBloc>(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20 , vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -59,16 +59,16 @@ class FormListaEspera extends StatelessWidget {
                     formValues: formValues),
                 const SizedBox(height: 10),
                 const _Preferences(
-                  icon: CustomThemeData.tableRestaurantIcon,
-                  opciones: ['Terraza','Adentro','Barra'],
-                  titulo: 'SECTOR'
-                   ),
+                    initSelected: 1,
+                    icon: CustomThemeData.tableRestaurantIcon,
+                    opciones: ['Terraza', 'Adentro', 'Barra'],
+                    titulo: 'SECTOR'),
                 const SizedBox(height: 10),
                 const _Preferences(
-                  icon: CupertinoIcons.clock,
-                  opciones: ['Sin Demora','5 min','10 min', '20 min'],
-                  titulo: 'DEMORA'
-                   ),
+                    initSelected: 0,
+                    icon: CupertinoIcons.clock,
+                    opciones: ['Sin Demora', '5 min', '10 min', '20 min'],
+                    titulo: 'DEMORA'),
                 const SizedBox(height: 10),
                 ElevatedButton(
                   style: CustomThemeData.buttonSubmitStyle,
@@ -180,42 +180,63 @@ class _CantidadPersonasState extends State<_CantidadPersonas> {
       );
 }
 
-class _Preferences extends StatelessWidget {
+class _Preferences extends StatefulWidget {
   final String titulo;
   final IconData icon;
   final List<String> opciones;
+  final int initSelected;
 
-  const _Preferences({
-    required this.titulo,
-    required this.icon,
-    required this.opciones
-    });
+  const _Preferences(
+      {required this.titulo,
+      required this.icon,
+      required this.opciones,
+      required this.initSelected});
+
+  @override
+  State<_Preferences> createState() => _PreferencesState();
+}
+
+class _PreferencesState extends State<_Preferences> {
+  int selected = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    selected = widget.initSelected;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 10 , left: 10),
+      padding: const EdgeInsets.only(bottom: 10, left: 10),
       decoration: CustomThemeData.inputStyle,
       child: Column(
         children: [
-          ListTile( 
-            minLeadingWidth: 0,
-            dense:true ,
-            iconColor: CustomThemeData.primaryColor,
-            leading: Icon(icon , size: 16),
-            title: Text(titulo ,
-            style: CustomThemeData.subtitle
-            )),
+          ListTile(
+              minLeadingWidth: 0,
+              dense: true,
+              iconColor: CustomThemeData.primaryColor,
+              leading: Icon(widget.icon, size: 16),
+              title: Text(widget.titulo, style: CustomThemeData.subtitle)),
           Row(
-            children: List.generate(opciones.length, (index) => 
-              Padding(
-                padding: const  EdgeInsets.only(right: 10),
-                child: ElevatedButton(
-                  onPressed: (){},
-                  style: CustomThemeData.optionButtonselected ,
-                  child: Text(opciones[index])),
-              )
-            ),
+            children: List.generate(
+                widget.opciones.length,
+                (index) => Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            selected = index;
+                            setState(() {});
+                          },
+                          style: selected == index
+                              ? CustomThemeData.optionButtonselected
+                              : CustomThemeData.optionButtonNoselected,
+                          child: Text(widget.opciones[index],
+                              style: selected == index
+                                  ? const TextStyle(color: Colors.white)
+                                  : const TextStyle(
+                                      color: CustomThemeData.primaryColor))),
+                    )),
           )
         ],
       ),
