@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
@@ -11,7 +12,9 @@ class FormListaEspera extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     Map<String, dynamic> formValues = {
       'nombre': '',
       'telefono': '',
@@ -20,7 +23,9 @@ class FormListaEspera extends StatelessWidget {
       "sector": 'Adentro',
       'demora': 20
     };
+
     final bloc = BlocProvider.of<ReservasBloc>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Form(
@@ -218,25 +223,31 @@ class _PreferencesState extends State<_Preferences> {
               iconColor: CustomThemeData.primaryColor,
               leading: Icon(widget.icon, size: 16),
               title: Text(widget.titulo, style: CustomThemeData.subtitle)),
-          Row(
-            children: List.generate(
-                widget.opciones.length,
-                (index) => Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            selected = index;
-                            setState(() {});
-                          },
-                          style: selected == index
-                              ? CustomThemeData.optionButtonselected
-                              : CustomThemeData.optionButtonNoselected,
-                          child: Text(widget.opciones[index],
+          Align(
+            alignment: Alignment.centerLeft,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                    widget.opciones.length,
+                    (index) => Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                selected = index;
+                                setState(() {});
+                              },
                               style: selected == index
-                                  ? const TextStyle(color: Colors.white)
-                                  : const TextStyle(
-                                      color: CustomThemeData.primaryColor))),
-                    )),
+                                  ? CustomThemeData.optionButtonselected
+                                  : CustomThemeData.optionButtonNoselected,
+                              child: Text(widget.opciones[index],
+                                  style: selected == index
+                                      ? const TextStyle(color: Colors.white)
+                                      : const TextStyle(
+                                          color: CustomThemeData.primaryColor))),
+                        )),
+              ),
+            ),
           )
         ],
       ),
