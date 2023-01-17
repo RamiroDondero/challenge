@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
@@ -12,7 +11,6 @@ class FormListaEspera extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     Map<String, dynamic> formValues = {
@@ -63,16 +61,20 @@ class FormListaEspera extends StatelessWidget {
                     formProperty: 'comentario',
                     formValues: formValues),
                 const SizedBox(height: 10),
-                const _Preferences(
+                _Preferences(
+                    formProperty: 'sector',
+                    formValues: formValues,
                     initSelected: 1,
                     icon: CustomThemeData.tableRestaurantIcon,
-                    opciones: ['Terraza', 'Adentro', 'Barra'],
+                    opciones: const ['Terraza', 'Adentro', 'Barra'],
                     titulo: 'SECTOR'),
                 const SizedBox(height: 10),
-                const _Preferences(
+                _Preferences(
+                    formProperty: 'demora',
+                    formValues: formValues,
                     initSelected: 0,
                     icon: CupertinoIcons.clock,
-                    opciones: ['Sin Demora', '5 min', '10 min', '20 min'],
+                    opciones: const ['Sin Demora', '5 min', '10 min', '20 min'],
                     titulo: 'DEMORA'),
                 const SizedBox(height: 10),
                 ElevatedButton(
@@ -190,12 +192,16 @@ class _Preferences extends StatefulWidget {
   final IconData icon;
   final List<String> opciones;
   final int initSelected;
+  final Map<String, dynamic> formValues;
+  final String formProperty;
 
   const _Preferences(
       {required this.titulo,
       required this.icon,
       required this.opciones,
-      required this.initSelected});
+      required this.initSelected,
+      required this.formValues,
+      required this.formProperty});
 
   @override
   State<_Preferences> createState() => _PreferencesState();
@@ -235,6 +241,7 @@ class _PreferencesState extends State<_Preferences> {
                           child: ElevatedButton(
                               onPressed: () {
                                 selected = index;
+                                widget.formValues[widget.formProperty] = widget.opciones[index];
                                 setState(() {});
                               },
                               style: selected == index
@@ -244,7 +251,8 @@ class _PreferencesState extends State<_Preferences> {
                                   style: selected == index
                                       ? const TextStyle(color: Colors.white)
                                       : const TextStyle(
-                                          color: CustomThemeData.primaryColor))),
+                                          color:
+                                              CustomThemeData.primaryColor))),
                         )),
               ),
             ),

@@ -134,7 +134,7 @@ class _ListaEspera extends StatelessWidget {
                               children:[
                                 const Text('Tiempo de espera', style: CustomThemeData.subtitle),
                                 const SizedBox(width: 2),
-                                Text('${lista[index]['demora']} min',style: CustomThemeData.demora)
+                                Text('${lista[index]['demora']}',style: CustomThemeData.demora)
                               ] 
                             ),
                             bubble: true,
