@@ -123,7 +123,10 @@ class _ListaEspera extends StatelessWidget {
             height: size * 0.7,
             child: SingleChildScrollView(
               child: Column(
-                  children: List.generate(
+                  children: 
+                    lista.isEmpty
+                    ? [ const SizedBox(height: 100), const Center(child: Text('Nadie en lista de espera'))]
+                    : List.generate(
                       lista.length,
                       (index) => CardReserva(
                             nombre: lista[index]['nombre'],

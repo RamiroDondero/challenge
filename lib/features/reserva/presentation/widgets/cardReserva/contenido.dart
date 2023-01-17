@@ -35,6 +35,7 @@ class _LineText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      // visualDensity: VisualDensity(vertical: ),
       minVerticalPadding: 0,
       dense: true,
       minLeadingWidth: 0,

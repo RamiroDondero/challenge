@@ -22,6 +22,31 @@ class FormListaEspera extends StatelessWidget {
       'demora': 20
     };
 
+    Map<int, dynamic> dia = {
+      1: 'Lun',
+      2: 'Mar',
+      3: 'Mie',
+      4: 'Jue',
+      5: 'Vie',
+      6: 'Sab',
+      7: 'Dom',
+    };
+
+     Map<int, dynamic> mes = {
+      1: 'Ene',
+      2: 'Feb',
+      3: 'Mar',
+      4: 'Abr',
+      5: 'May',
+      6: 'Jun',
+      7: 'Jul',
+      8: 'Ago',
+      9: 'Sep',
+      10: 'Oct',
+      11: 'Nov',
+      12: 'Dic',
+    };
+
     final bloc = BlocProvider.of<ReservasBloc>(context);
 
     return Padding(
@@ -30,12 +55,17 @@ class FormListaEspera extends StatelessWidget {
           key: formKey,
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    width: 60, height: 3, color: CustomThemeData.greyLines),
+                Center(
+                  child: Container(
+                      width: 60, height: 3, color: CustomThemeData.greyLines),
+                ),
                 const SizedBox(height: 20),
                 const _Title(),
-                const SizedBox(height: 30),
+                const SizedBox(height: 3),
+                Text('${dia[DateTime.now().weekday]}, ${DateTime.now().day} de ${mes[DateTime.now().month]} (Hoy)'),
+                const SizedBox(height: 10),
                 CustomInputField(
                   validator: true,
                   labelText: 'NOMBRE*',
@@ -241,7 +271,8 @@ class _PreferencesState extends State<_Preferences> {
                           child: ElevatedButton(
                               onPressed: () {
                                 selected = index;
-                                widget.formValues[widget.formProperty] = widget.opciones[index];
+                                widget.formValues[widget.formProperty] =
+                                    widget.opciones[index];
                                 setState(() {});
                               },
                               style: selected == index
