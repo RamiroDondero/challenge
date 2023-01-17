@@ -48,7 +48,8 @@ class FormListaEspera extends StatelessWidget {
                   formValues: formValues,
                 ),
                 const SizedBox(height: 10),
-                const _InputStyle(child: _CantidadPersonas()),
+                _InputStyle(
+                    child: _CantidadPersonas(personas:'personas' ,  formValues: formValues)),
                 const SizedBox(height: 10),
                 CustomInputField(
                     labelText: 'AGREGAR NOTA',
@@ -116,20 +117,46 @@ class _InputStyle extends StatelessWidget {
   }
 }
 
-class _CantidadPersonas extends StatelessWidget {
-  const _CantidadPersonas();
+class _CantidadPersonas extends StatefulWidget {
+  final String personas;
+  final Map<String, dynamic> formValues;
+
+  const _CantidadPersonas({required this.personas, required this.formValues});
+
+  @override
+  State<_CantidadPersonas> createState() => _CantidadPersonasState();
+}
+
+class _CantidadPersonasState extends State<_CantidadPersonas> {
+  int personas = 1;
+
   @override
   Widget build(BuildContext context) {
     const sizedBox = SizedBox(width: 10);
+
     return Row(
       children: [
         const Icon(CupertinoIcons.person),
         sizedBox,
         _data(),
         const Expanded(child: sizedBox),
-        const CircleButton(icon: CupertinoIcons.minus),
+        GestureDetector(
+            onTap: () {
+              setState(() {
+                if (personas <= 1) return;
+                personas -= 1;
+              });
+            },
+            child: const CircleButton(icon: CupertinoIcons.minus)),
         sizedBox,
-        const CircleButton(icon: Icons.add)
+        GestureDetector(
+            onTap: () {
+              setState(() {
+                personas += 1;
+                widget.formValues[widget.personas] = personas;
+              });
+            },
+            child: const CircleButton(icon: Icons.add)),
       ],
     );
   }
@@ -137,11 +164,11 @@ class _CantidadPersonas extends StatelessWidget {
   Widget _data() => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('Cantidad de Personas',
+        children: [
+          const Text('Cantidad de Personas',
               style: TextStyle(color: CustomThemeData.grey)),
           Text(
-            '2 Personas',
+            '$personas Personas',
             style: CustomThemeData.subtitle,
           )
         ],

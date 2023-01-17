@@ -8,7 +8,7 @@ import '../models/reserva_model.dart';
 abstract class ReservaRemoteDataSource {
   /// vamos a llamar al backend por peticion http
   ///
-  /// en caso de error arroja [ServerException]E
+  /// en caso de error arroja [ServerException]
   Future<List<ReservaModel>> getListReserva();
 }
 

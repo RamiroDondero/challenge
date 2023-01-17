@@ -88,6 +88,7 @@ class _CardReservaState extends State<CardReserva> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+             
               Titulo(
                 iconHoraOcalendario: widget.iconHoraOcalendario,
                 horaOespera: widget.horaOespera,
@@ -96,13 +97,17 @@ class _CardReservaState extends State<CardReserva> {
                 comentario: widget.comentario,
                 checkAndDiscount: widget.checkAndDiscount,
               ),
+            
               const SizedBox(height: 10),
+           
               Preferences(
                 ubicacion: widget.sector,
                 carrito: widget.carrito,
                 discapacitado: widget.discapacitado,
               ),
+           
               const SizedBox(height: 10),
+           
               show == true
                   ? Contenido(
                       tel: widget.telefono,
@@ -110,9 +115,11 @@ class _CardReservaState extends State<CardReserva> {
                       comentario: widget.comentario,
                     )
                   : const SizedBox(),
+          
               const SizedBox(height: 10),
               show == true ? const Opciones() : const SizedBox(),
               show == true ? const SizedBox(height: 10) : const SizedBox(),
+          
               Container(width: 67, height: 2, color: CustomThemeData.greyLines)
             ],
           )),
