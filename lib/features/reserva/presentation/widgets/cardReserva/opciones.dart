@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/custom_theme_data.dart';
+import '../../../../../core/constants/custom_theme_data.dart';
 import '../widgets.dart';
 
 class Opciones extends StatelessWidget {

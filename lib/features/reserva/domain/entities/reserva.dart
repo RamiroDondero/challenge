@@ -1,6 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 import '../../../user/domain/entity/client_data.dart';
 
-class Reserva {
+class Reserva extends Equatable {
+
   final List<ClientData> clientData;
   final String comment;
   final String day;
@@ -9,7 +12,8 @@ class Reserva {
   final String showDay;
   final int state;
   final String horaReserva;
-  Reserva({
+  
+  const Reserva({
     this.horaReserva = '',
     required this.clientData,
     required this.comment,
@@ -39,4 +43,18 @@ class Reserva {
           sector: sector ?? this.sector,
           showDay: showDay ?? this.showDay,
           state: state ?? this.state);
+          
+            
+            
+  @override
+  List<Object?> get props => [
+    clientData,
+    comment,
+    day,
+    quantity,
+    sector,
+    showDay,
+    state,
+    horaReserva
+  ];
 }

@@ -4,7 +4,7 @@ import 'package:woki_partner/features/reserva/domain/entities/grupo_reservas.dar
 
 import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart';
 
-import '../../../../../core/custom_theme_data.dart';
+import '../../../../../core/constants/custom_theme_data.dart';
 import '../../../domain/entities/reserva.dart';
 
 class GrupoTarjetas extends StatelessWidget {

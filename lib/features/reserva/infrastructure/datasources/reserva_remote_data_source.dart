@@ -16,8 +16,7 @@ class ReservaRemoteDataSourceImpl implements ReservaRemoteDataSource {
   @override
   Future<List<ReservaModel>> getListReserva() {
     try {
-      final resp =
-          File('test/fixtures/datos_prueba_tecnica.json').readAsStringSync();
+      final resp = File('test/fixtures/datos_prueba_tecnica.json').readAsStringSync();
       final List decoded = json.decode(resp);
       final lista = decoded.map((e) => ReservaModel.fromMap(e)).toList();
 

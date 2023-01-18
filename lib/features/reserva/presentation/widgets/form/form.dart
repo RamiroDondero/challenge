@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:woki_partner/core/constants/ui_values.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 
-import '../../../../../core/custom_theme_data.dart';
+import '../../../../../core/constants/custom_theme_data.dart';
 import '../widgets.dart';
 
 class FormListaEspera extends StatelessWidget {

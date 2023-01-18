@@ -7,7 +7,7 @@ class ReservaModel extends Reserva {
   
   final List<ClientDataModel> clientData;
 
-  ReservaModel({
+  const ReservaModel({
     required this.clientData,
     required super.comment,
     required super.day,
@@ -17,8 +17,7 @@ class ReservaModel extends Reserva {
     required super.state,
   }) : super(clientData: clientData);
 
-  factory ReservaModel.fromJson(String str) =>
-      ReservaModel.fromMap(json.decode(str));
+  factory ReservaModel.fromJson(String str) => ReservaModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 

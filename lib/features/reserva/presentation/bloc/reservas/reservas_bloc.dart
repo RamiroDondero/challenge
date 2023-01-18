@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:woki_partner/features/reserva/application/get_list_grupo_reservas.dart';
 import 'package:woki_partner/features/reserva/application/get_list_reservas.dart';
-import 'package:woki_partner/features/reserva/application/usecase.dart';
+import 'package:woki_partner/core/useCase/usecase.dart';
 import 'package:woki_partner/features/reserva/domain/entities/grupo_reservas.dart';
 
 import '../../../application/get_cant_reservas.dart';
@@ -27,10 +27,11 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
 
     on<LoadingEvent>((event, emit) async {
 
-        final failureOrReserva = await getLisTReservas.call(NoParams());
+        final failureOrReserva = await getLisTReservas(NoParams());
+        
         failureOrReserva.fold((l) => null, (reservas) {
         
-        final listaGrupoReservas = getListGrupoReservas.agruparReservas(reservas, state.currentPage);
+        final listaGrupoReservas = getListGrupoReservas.getListGrupoReservas(reservas, state.currentPage);
         
         final vivas = getCantidadReservas.getCantReservas(reservas, [4, 5]);
         
@@ -56,7 +57,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
     });
 
     on<ListUpdateEvent>((event, emit) {
-      final listaGrupoReservas = getListGrupoReservas.agruparReservas(
+      final listaGrupoReservas = getListGrupoReservas.getListGrupoReservas(
           state.listaReservas, state.currentPage);
       emit(state.copyWith(listaReservasAgrupadas: listaGrupoReservas));
     });

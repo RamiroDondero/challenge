@@ -1,9 +1,9 @@
 import '../domain/entities/reserva.dart';
 
-class GetCantReservas {
+class GetCantReservas  {
   const GetCantReservas();
 
-  int getCantReservas(List<Reserva> reservas, List state) {
+  int getCantReservas(List<Reserva> reservas, List<int> state) {
     int cant = 0;
 
     for (final e in state) {
@@ -13,5 +13,5 @@ class GetCantReservas {
     }
 
     return cant;
-  }
+  } 
 }

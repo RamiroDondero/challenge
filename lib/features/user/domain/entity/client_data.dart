@@ -1,4 +1,6 @@
-class ClientData {
+import 'package:equatable/equatable.dart';
+
+class ClientData extends Equatable {
   
     final String email;
     final String id;
@@ -6,12 +8,21 @@ class ClientData {
     final String phone;
     final String token;
 
-  ClientData({
+  const ClientData({
         required this.email,
         required this.id,
         required this.name,
         required this.phone,
         required this.token,
     });
+    
+      @override  
+      List<Object?> get props =>[ 
+        email,
+        id,
+        name,
+        phone,
+        token
+      ];
 
 }

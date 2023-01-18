@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:woki_partner/core/custom_theme_data.dart';
+import 'package:woki_partner/core/constants/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

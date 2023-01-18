@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:woki_partner/core/custom_theme_data.dart';
+import 'package:woki_partner/core/constants/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
-import 'features/reserva/presentation/widgets/widgets.dart';
-import 'features/reserva/presentation/pages/home_page.dart';
+import 'features/reserva/presentation/pages/pages.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -37,19 +36,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: const HomePage(),
-    );
-  }
-}
-
-class TestScreen extends StatelessWidget {
-  const TestScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-   
-
-    return const Scaffold(
-        body: Text('test')
     );
   }
 }
