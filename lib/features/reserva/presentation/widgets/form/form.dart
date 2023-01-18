@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:woki_partner/core/constants/ui_values.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 
 import '../../../../../core/custom_theme_data.dart';
@@ -23,31 +24,11 @@ class FormListaEspera extends StatelessWidget {
       'sinEspera': 'En espera de una mesa'
     };
 
-    Map<int, dynamic> dia = {
-      1: 'Lun',
-      2: 'Mar',
-      3: 'Mie',
-      4: 'Jue',
-      5: 'Vie',
-      6: 'Sab',
-      7: 'Dom',
-    };
-
-     Map<int, dynamic> mes = {
-      1: 'Ene',
-      2: 'Feb',
-      3: 'Mar',
-      4: 'Abr',
-      5: 'May',
-      6: 'Jun',
-      7: 'Jul',
-      8: 'Ago',
-      9: 'Sep',
-      10: 'Oct',
-      11: 'Nov',
-      12: 'Dic',
-    };
-
+    final day = CustomDataTime.day;
+    final month = CustomDataTime.month;
+    final weekday = CustomDataTime.weekday;
+    final dia = CustomDataTime.dia;
+    final mes = CustomDataTime.mes;
     final bloc = BlocProvider.of<ReservasBloc>(context);
 
     return Padding(
@@ -65,7 +46,7 @@ class FormListaEspera extends StatelessWidget {
                 const SizedBox(height: 15),
                 const _Title(),
                 const SizedBox(height: 3),
-                Text('${dia[DateTime.now().weekday]}, ${DateTime.now().day} de ${mes[DateTime.now().month]} (Hoy)'),
+                Text('${dia[weekday]}, $day de ${mes[month]} (Hoy)'),
                 const SizedBox(height: 10),
                 CustomInputField(
                   validator: true,
@@ -97,7 +78,7 @@ class FormListaEspera extends StatelessWidget {
                     formValues: formValues,
                     initSelected: 1,
                     icon: CustomThemeData.tableRestaurantIcon,
-                    opciones: const ['Terraza', 'Adentro', 'Barra'],
+                    opciones: FormValues.opcionesUbicacion,
                     titulo: 'SECTOR'),
                 const SizedBox(height: 10),
                 _Preferences(
@@ -105,7 +86,7 @@ class FormListaEspera extends StatelessWidget {
                     formValues: formValues,
                     initSelected: 0,
                     icon: CupertinoIcons.clock,
-                    opciones: const ['Sin Demora', '5 min', '10 min', '20 min'],
+                    opciones: FormValues.opcionesDemora,
                     titulo: 'DEMORA'),
                 const SizedBox(height: 10),
                 ElevatedButton(

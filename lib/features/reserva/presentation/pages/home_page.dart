@@ -1,6 +1,5 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:woki_partner/core/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +35,15 @@ class _MenuHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        
         const _AddButton(),
+       
         const SizedBox(height: 15),
+       
         _BotonesEstadoReserva(),
+       
         const SizedBox(height: 15),
+       
         state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
       ],
     );

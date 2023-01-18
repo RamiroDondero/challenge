@@ -17,26 +17,37 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
   final GetCantReservas getCantidadReservas;
 
   ReservasBloc(
-      {required this.getCantidadReservas,
+      {
+      required this.getCantidadReservas,
       required this.getListGrupoReservas,
-      required this.getLisTReservas})
+      required this.getLisTReservas
+      })
       : super(const ReservasState(
             listaReservas:[], listaReservasAgrupadas: [] , listaEspera: [])) {
+
     on<LoadingEvent>((event, emit) async {
-      final failureOrReserva = await getLisTReservas.call(NoParams());
-      failureOrReserva.fold((l) => null, (reservas) {
+
+        final failureOrReserva = await getLisTReservas.call(NoParams());
+        failureOrReserva.fold((l) => null, (reservas) {
+        
         final listaGrupoReservas = getListGrupoReservas.agruparReservas(reservas, state.currentPage);
+        
         final vivas = getCantidadReservas.getCantReservas(reservas, [4, 5]);
+        
         final noConcurrieron = getCantidadReservas.getCantReservas(reservas, [6]);
+        
         final ingresadas = getCantidadReservas.getCantReservas(reservas, [7]);
+        
         final enListaEspera = state.listaEspera.length;
+        
         emit(state.copyWith(
             reservasVivas: vivas,
             noConcurrieron: noConcurrieron,
             ingreasadas: ingresadas,
             listaReservas: reservas,
             cantEnListaEspera: enListaEspera,
-            listaReservasAgrupadas: listaGrupoReservas));
+            listaReservasAgrupadas: listaGrupoReservas
+            ));
       });
     });
 
