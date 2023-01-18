@@ -40,7 +40,8 @@ class _Horario extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(grupoReservas.rangoHorario, style: CustomThemeData.horaGrupoReservas),
+        Text(grupoReservas.rangoHorario,
+            style: CustomThemeData.horaGrupoReservas),
         Container(
           decoration: CustomThemeData.sombrasTarjetas,
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -66,22 +67,22 @@ class _GrupoDeTarjetas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-  
     return Column(
         children: listaReservas
             .map((reserva) => CardReserva(
-                horaOespera: const Text('12:00hs', style: TextStyle(fontSize: 12)),
-                checkAndDiscount: reserva.state == 5 ? true : false,
-                nombre: reserva.clientData[0].name,
-                sector: reserva.sector.toString(),
-                carrito: true,
-                discapacitado: false,
-                personas: reserva.quantity,
-                telefono: reserva.clientData[0].phone,
-                comentario: reserva.comment,
-                email: reserva.clientData[0].email,
-                iconHoraOcalendario:  const CustomIcon(Icons.calendar_today_outlined),
+                  horaOespera:  Text(reserva.horaReserva,
+                      style: const TextStyle(fontSize: 12)),
+                  checkAndDiscount: reserva.state == 5 ? true : false,
+                  nombre: reserva.clientData[0].name,
+                  sector: reserva.sector.toString(),
+                  carrito: true,
+                  discapacitado: false,
+                  personas: reserva.quantity,
+                  telefono: reserva.clientData[0].phone,
+                  comentario: reserva.comment,
+                  email: reserva.clientData[0].email,
+                  iconHoraOcalendario:
+                      const CustomIcon(Icons.calendar_today_outlined),
                 ))
             .toList());
   }

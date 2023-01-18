@@ -8,10 +8,11 @@ class Reserva {
   final String sector;
   final String showDay;
   final int state;
-
+  final String horaReserva;
   Reserva({
+    this.horaReserva = '',
     required this.clientData,
-    required this.comment, 
+    required this.comment,
     required this.day,
     required this.quantity,
     required this.sector,
@@ -19,26 +20,23 @@ class Reserva {
     required this.state,
   });
 
-
   Reserva copyWith({
-  List<ClientData>? clientData,
-  String? comment,
-  String? day,
-  int? quantity,
-  String? sector,
-  String? showDay,
-  int? state,
-}) =>
-    Reserva(
-        clientData: clientData ?? this.clientData ,
-        comment: comment ?? this.comment,
-        day: day ?? this.day,
-        quantity: quantity ?? this.quantity ,
-        sector: sector ?? this.sector,
-        showDay: showDay ?? this.showDay,
-        state: state ?? this.state
-        );
-
+    List<ClientData>? clientData,
+    String? comment,
+    String? day,
+    int? quantity,
+    String? sector,
+    String? showDay,
+    int? state,
+    String? horaReserva
+  }) =>
+      Reserva(
+          horaReserva: horaReserva ?? this.horaReserva,
+          clientData: clientData ?? this.clientData,
+          comment: comment ?? this.comment,
+          day: day ?? this.day,
+          quantity: quantity ?? this.quantity,
+          sector: sector ?? this.sector,
+          showDay: showDay ?? this.showDay,
+          state: state ?? this.state);
 }
-
-

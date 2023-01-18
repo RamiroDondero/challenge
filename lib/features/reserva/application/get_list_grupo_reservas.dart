@@ -1,4 +1,3 @@
-
 import '../domain/entities/grupo_reservas.dart';
 import '../domain/entities/reserva.dart';
 
@@ -22,8 +21,13 @@ class GetListGrupoReservas {
             GrupoReservas(rangoHorario: rangoHorario(index), reservas: []));
   }
 
-  Reserva actualizarHorarioReservaUTC(Reserva reserva, DateTime day) =>
-      reserva.copyWith(day: day.toUtc().toString());
+  Reserva actualizarHorarioReservaUTC(Reserva reserva, DateTime day) {
+    final String hora = day.hour.toString();
+    final String min = day.minute < 9 ? '0${day.minute}' : '${day.minute}';
+    final String horaReserva = '$hora:$min hs';
+    return reserva.copyWith(
+        day: day.toUtc().toString(), horaReserva: horaReserva);
+  }
 
   List determinarState(int currenPage) {
     switch (currenPage) {
@@ -54,7 +58,7 @@ class GetListGrupoReservas {
         case 1:
         case 2:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[0].reservas.add(copyReserva);
             }
           }
@@ -64,7 +68,7 @@ class GetListGrupoReservas {
         case 4:
         case 5:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[1].reservas.add(copyReserva);
             }
           }
@@ -74,7 +78,7 @@ class GetListGrupoReservas {
         case 7:
         case 8:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[2].reservas.add(copyReserva);
             }
           }
@@ -83,7 +87,7 @@ class GetListGrupoReservas {
         case 10:
         case 11:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[3].reservas.add(copyReserva);
             }
           }
@@ -93,7 +97,7 @@ class GetListGrupoReservas {
         case 13:
         case 14:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[4].reservas.add(copyReserva);
             }
           }
@@ -103,7 +107,7 @@ class GetListGrupoReservas {
         case 16:
         case 17:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[5].reservas.add(copyReserva);
             }
           }
@@ -112,8 +116,8 @@ class GetListGrupoReservas {
         case 18:
         case 19:
         case 20:
-         for (final i in state) {
-            if (copyReserva.state == i){
+          for (final i in state) {
+            if (copyReserva.state == i) {
               listaAgrupada[6].reservas.add(copyReserva);
             }
           }
@@ -123,7 +127,7 @@ class GetListGrupoReservas {
         case 22:
         case 23:
           for (final i in state) {
-            if (copyReserva.state == i){
+            if (copyReserva.state == i) {
               listaAgrupada[7].reservas.add(copyReserva);
             }
           }

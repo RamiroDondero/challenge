@@ -19,7 +19,8 @@ class FormListaEspera extends StatelessWidget {
       "personas": 1,
       'comentario': '',
       "sector": 'Adentro',
-      'demora': 0
+      'demora': 0,
+      'sinEspera': 'En espera de una mesa'
     };
 
     Map<int, dynamic> dia = {

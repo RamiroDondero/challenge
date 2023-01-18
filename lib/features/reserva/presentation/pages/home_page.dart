@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:woki_partner/core/custom_theme_data.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 import 'package:flutter/material.dart';
@@ -135,10 +136,17 @@ class _ListaEspera extends StatelessWidget {
                             telefono: lista[index]['telefono'],
                             comentario: lista[index]['comentario'],
                             horaOespera: Row(
-                              children:[
+                              children:
+                              lista[index]['demora'] != 0 
+                              ?
+                              [
                                 const Text('Tiempo de espera', style: CustomThemeData.subtitle),
                                 const SizedBox(width: 2),
                                 Text('${lista[index]['demora']}',style: CustomThemeData.demora)
+                              ]
+                              :
+                              [
+                                const Text('En espera de una mesa')
                               ] 
                             ),
                             bubble: true,
