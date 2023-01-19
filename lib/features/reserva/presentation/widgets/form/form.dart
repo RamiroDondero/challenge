@@ -220,6 +220,7 @@ class _Preferences extends StatefulWidget {
 }
 
 class _PreferencesState extends State<_Preferences> {
+  
   int selected = 0;
 
   @override
@@ -253,8 +254,7 @@ class _PreferencesState extends State<_Preferences> {
                           child: ElevatedButton(
                               onPressed: () {
                                 selected = index;
-                                widget.formValues[widget.formProperty] =
-                                    widget.opciones[index];
+                                widget.formValues[widget.formProperty] =  widget.opciones[index];
                                 setState(() {});
                               },
                               style: selected == index

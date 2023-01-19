@@ -14,11 +14,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
-          return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: _MenuHome(state),
-            ),
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: _MenuHome(state),
           );
         },
       ),
