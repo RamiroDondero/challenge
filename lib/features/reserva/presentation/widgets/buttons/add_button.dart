@@ -17,8 +17,8 @@ class AddButton extends StatelessWidget {
             return Container(
                 decoration: CustomThemeData.formDraggable,
                 child: DraggableScrollableSheet(
-                  initialChildSize: 0.88,
-                  maxChildSize: 0.89,
+                  initialChildSize: 0.83,
+                  maxChildSize: 0.83,
                   minChildSize: 0.0,
                   expand: false,
                   builder: (BuildContext context,

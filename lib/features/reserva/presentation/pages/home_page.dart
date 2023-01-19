@@ -14,8 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
+          return SafeArea(
             child: _MenuHome(state),
           );
         },
@@ -31,19 +30,40 @@ class _MenuHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        
-        const _AddButton(),
-       
-        const SizedBox(height: 15),
-       
-        _BotonesEstadoReserva(),
-       
-        const SizedBox(height: 15),
-       
-        state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Column(
+        children: [
+          
+          const Padding(
+            padding:  EdgeInsets.only(right: 8),
+            child:  _AddButton(),
+          ),
+         
+          const SizedBox(height: 15),
+         
+          _BotonesEstadoReserva(),
+         
+          const SizedBox(height: 15),
+
+          state.currentPage == 1 
+          ? Padding(
+            padding: const  EdgeInsets.only(left: 8),
+            child: Row(
+              children: const [
+                Divider(color: CustomThemeData.greyLines),
+                Text('Lista de espera' , style: CustomThemeData.horaGrupoReservas,),
+                Divider(color: CustomThemeData.greyLines),
+              ]
+            ),
+          )
+          : const SizedBox(),
+
+          const SizedBox(height: 15),
+         
+          state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
+        ],
+      ),
     );
   }
 }
@@ -72,7 +92,7 @@ class _BotonesEstadoReserva extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: List.generate(
               4,
               (index) => GestureDetector(
@@ -114,49 +134,38 @@ class _ListaEspera extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lista = BlocProvider.of<ReservasBloc>(context).state.listaEspera;
-    final size = MediaQuery.of(context).size.height;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Divider(),
-        const Text('Lista de Espera', style: CustomThemeData.horaGrupoReservas),
-        const Divider(),
-        SizedBox(
-            height: size * 0.7,
-            child: SingleChildScrollView(
-              child: Column(
-                  children: 
-                    lista.isEmpty
-                    ? [ const SizedBox(height: 100), const Center(child: Text('Nadie en lista de espera'))]
-                    : List.generate(
-                      lista.length,
-                      (index) => CardReserva(
-                            nombre: lista[index]['nombre'],
-                            sector: lista[index]['sector'],
-                            personas: lista[index]['personas'],
-                            telefono: lista[index]['telefono'],
-                            comentario: lista[index]['comentario'],
-                            horaOespera: Row(
-                              children:
-                              lista[index]['demora'] != 0 
-                              ?
-                              [
-                                const Text('Tiempo de espera', style: CustomThemeData.subtitle),
-                                const SizedBox(width: 2),
-                                Text('${lista[index]['demora']}',style: CustomThemeData.demora)
-                              ]
-                              :
-                              [
-                                const Text('En espera de una mesa')
-                              ] 
-                            ),
-                            bubble: true,
-                            bubbleNum: index + 1, 
-                            iconHoraOcalendario: const CustomIcon(CupertinoIcons.clock),
-                          ))),
-            ))
-      ],
-    );
+    return Expanded(child: ListView.builder(
+      itemCount: lista.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 8,top: 15 ,right: 8),
+          child: CardReserva(
+                                nombre: lista[index]['nombre'],
+                                sector: lista[index]['sector'],
+                                personas: lista[index]['personas'],
+                                telefono: lista[index]['telefono'],
+                                comentario: lista[index]['comentario'],
+                                horaOespera: Row(
+                                  children:
+                                  lista[index]['demora'] != 0 
+                                  ?
+                                  [
+                                    const Text('Tiempo de espera', style: CustomThemeData.subtitle),
+                                    const SizedBox(width: 2),
+                                    Text('${lista[index]['demora']}',style: CustomThemeData.demora)
+                                  ]
+                                  :
+                                  [
+                                    const Text('En espera de una mesa')
+                                  ] 
+                                ),
+                                bubble: true,
+                                bubbleNum: index + 1, 
+                                iconHoraOcalendario: const CustomIcon(CupertinoIcons.clock),
+                              ),
+        );
+      },
+    ),);
   }
 }
+

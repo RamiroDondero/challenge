@@ -1,7 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:woki_partner/core/error/exception.dart';
+
+import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/reserva_model.dart';
 
@@ -14,13 +15,14 @@ abstract class ReservaRemoteDataSource {
 
 class ReservaRemoteDataSourceImpl implements ReservaRemoteDataSource {
   @override
-  Future<List<ReservaModel>> getListReserva() {
+  Future<List<ReservaModel>> getListReserva() async {
     try {
-      final resp = File('test/fixtures/datos_prueba_tecnica.json').readAsStringSync();
+      
+      final String resp = await rootBundle.loadString('assets/datos_prueba_tecnica.json');
       final List decoded = json.decode(resp);
       final lista = decoded.map((e) => ReservaModel.fromMap(e)).toList();
-
       return Future.value(lista);
+      
     } catch (e) {
       print(e);
       return Future.value([]);
