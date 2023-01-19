@@ -48,8 +48,9 @@ class _MenuHome extends StatelessWidget {
 
           state.currentPage == 1 
           ? Padding(
-            padding: const  EdgeInsets.only(left: 8),
-            child: Row(
+            padding: const  EdgeInsets.symmetric(horizontal:8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 Divider(color: CustomThemeData.greyLines),
                 Text('Lista de espera' , style: CustomThemeData.horaGrupoReservas,),
