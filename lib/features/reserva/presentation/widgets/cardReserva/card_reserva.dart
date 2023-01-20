@@ -25,13 +25,14 @@ class CardReserva extends StatefulWidget {
     required this.personas,
     required this.telefono,
     required this.horaOespera,
+    required this.iconHoraOcalendario,
     this.comentario = '',
     this.email = '',
     this.bubbleNum = 0,
     this.bubble = false,
     this.carrito = false,
     this.discapacitado = false,
-    this.checkAndDiscount = false, required this.iconHoraOcalendario,
+    this.checkAndDiscount = false,
   });
 
   @override
@@ -45,21 +46,29 @@ class _CardReservaState extends State<CardReserva> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _background(),
-        Positioned(top: 7, right: 0, left: 0, child: _card()),
-        widget.bubble == true
+           
+           _backgroundStack(),
+           
+            Positioned(
+              top: 7,
+              right: 0,
+              left: 0,
+              child: _card()
+              ),
+            
+            widget.bubble == true
             ? CircleAvatar(
                 backgroundColor: CustomThemeData.primaryColor,
                 radius: 12,
-                child: Text('${widget.bubbleNum}',
-                    style:
-                        CustomThemeData.subtitle.copyWith(color: Colors.white)))
+                child: Text(
+                    '${widget.bubbleNum}',
+                    style: CustomThemeData.subtitle.copyWith(color: Colors.white)))
             : const SizedBox()
       ],
     );
   }
 
-  Widget _background() {
+  Widget _backgroundStack() {
     return GestureDetector(
       onTap: () {
         show = !show;
@@ -117,10 +126,13 @@ class _CardReservaState extends State<CardReserva> {
                   : const SizedBox(),
           
               const SizedBox(height: 10),
+           
               show == true ? const Opciones() : const SizedBox(),
+           
               show == true ? const SizedBox(height: 10) : const SizedBox(),
           
               Container(width: 67, height: 2, color: CustomThemeData.greyLines)
+           
             ],
           )),
     );

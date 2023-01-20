@@ -2,9 +2,11 @@ import '../domain/entities/grupo_reservas.dart';
 import '../domain/entities/reserva.dart';
 
 class GetListGrupoReservas {
+  
   const GetListGrupoReservas();
 
   List<GrupoReservas> getListGrupoReservas( List<Reserva> listaReservas, int currentPage) {
+   
     final state = determinarState(currentPage);
 
     final List<GrupoReservas> listaAgrupada = crearLista(8);
@@ -104,18 +106,18 @@ class GetListGrupoReservas {
 
   String rangoHorario(int index) {
     int x = 3 * index;
-    int y = 3 * index + 3;
     x = x == 24 ? 0 : x;
+    int y = x + 3;
     y = y == 24 ? 0 : y;
+
     final start = x <= 9 ? '0$x' : '$x';
     final end = y <= 9 ? '0$y' : '$y';
+    
     return '$start:00hs - $end:00hs';
   }
 
   List<GrupoReservas> crearLista(int grupos) {
-    return List.generate(
-        grupos,
-        (index) => GrupoReservas(rangoHorario: rangoHorario(index), reservas: []));
+    return List.generate( grupos, (index) => GrupoReservas(rangoHorario: rangoHorario(index), reservas: []));
   }
 
   Reserva actualizarHorarioReservaUTC(Reserva reserva, DateTime day) {

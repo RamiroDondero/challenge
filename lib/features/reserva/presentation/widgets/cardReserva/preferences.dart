@@ -61,8 +61,7 @@ class _Preferences extends StatelessWidget {
         height: 25,
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         decoration: BoxDecoration(
-            border: Border.all(
-                color: disabled ? Colors.grey : CustomThemeData.primaryColor),
+            border: Border.all(color: disabled ? Colors.grey : CustomThemeData.primaryColor),
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: child);
   }

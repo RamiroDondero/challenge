@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomThemeData {
+
   static final ThemeData customTheme = ThemeData(
       fontFamily: 'Poppins',
       inputDecorationTheme: const InputDecorationTheme(
@@ -33,20 +34,20 @@ class CustomThemeData {
       fontFamily: 'Poppins');
 
   static const TextStyle subtitle = TextStyle(
-      color: CustomThemeData.dark, fontSize: 12, fontWeight: FontWeight.w500);
+     color: CustomThemeData.dark, fontSize: 12, fontWeight: FontWeight.w500);
 
 
   static const TextStyle demora = TextStyle(
-      color: Colors.red, fontSize: 12, fontWeight: FontWeight.w500);
+    color: Colors.red, fontSize: 12, fontWeight: FontWeight.w500);
 
   static const TextStyle nombreUsuario = TextStyle(
-      color: CustomThemeData.dark, fontWeight: FontWeight.w700, fontSize: 14);
+     color: CustomThemeData.dark, fontWeight: FontWeight.w700, fontSize: 14);
 
-  static const TextStyle buttonSubmitTextStyle =
-      TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
+  static const TextStyle buttonSubmitTextStyle =  TextStyle(
+    fontWeight: FontWeight.w500, fontSize: 14);
 
   static TextStyle formTitle = const TextStyle(
-      fontSize: 20, fontWeight: FontWeight.w600, color: CustomThemeData.dark);
+     fontSize: 20, fontWeight: FontWeight.w600, color: CustomThemeData.dark);
 
   //BOX SHADOW
   static BoxShadow sombra = BoxShadow(

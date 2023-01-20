@@ -22,8 +22,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
       required this.getListGrupoReservas,
       required this.getLisTReservas
       })
-      : super(const ReservasState(
-            listaReservas:[], listaReservasAgrupadas: [] , listaEspera: [])) {
+      : super(const ReservasState(listaReservas:[], listaReservasAgrupadas: [] , listaEspera: [])) {
 
     on<LoadingEvent>((event, emit) async {
 
@@ -57,8 +56,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
     });
 
     on<ListUpdateEvent>((event, emit) {
-      final listaGrupoReservas = getListGrupoReservas.getListGrupoReservas(
-          state.listaReservas, state.currentPage);
+      final listaGrupoReservas = getListGrupoReservas.getListGrupoReservas(state.listaReservas, state.currentPage);
       emit(state.copyWith(listaReservasAgrupadas: listaGrupoReservas));
     });
 

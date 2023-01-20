@@ -21,8 +21,8 @@ void main() {
   });
 
   group('rangoHorario', () {
-    const  int number = 7;
-    const String horario = '21:00hs - 00:00hs';
+    const  int number = 8;
+    const String horario = '00:00hs - 03:00hs';
 
     test('debe retornar un String cuando se pasa un entero', () {
       // act

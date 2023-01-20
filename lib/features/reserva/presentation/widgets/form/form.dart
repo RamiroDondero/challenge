@@ -40,14 +40,19 @@ class FormListaEspera extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: Container(
-                      width: 60, height: 3, color: CustomThemeData.greyLines),
+                  child: Container( width: 60, height: 3, color: CustomThemeData.greyLines),
                 ),
+                
                 const SizedBox(height: 15),
+                
                 const _Title(),
+                
                 const SizedBox(height: 3),
+                
                 Text('${dia[weekday]}, $day de ${mes[month]} (Hoy)'),
+                
                 const SizedBox(height: 10),
+                
                 CustomInputField(
                   validator: true,
                   labelText: 'NOMBRE*',
@@ -55,24 +60,33 @@ class FormListaEspera extends StatelessWidget {
                   formProperty: 'nombre',
                   formValues: formValues,
                 ),
+                
                 const SizedBox(height: 10),
+                
                 CustomInputField(
+                  textInputType: TextInputType.phone,
                   labelText: 'TELEFONO',
                   hintText: 'Escribe tu teléfono',
                   formProperty: 'telefono',
                   formValues: formValues,
                 ),
+                
                 const SizedBox(height: 10),
+                
                 _InputStyle(
                     child: _CantidadPersonas(
                         personas: 'personas', formValues: formValues)),
+                
                 const SizedBox(height: 10),
+                
                 CustomInputField(
                     labelText: 'AGREGAR NOTA',
                     hintText: 'Agrega una nota sobre la reserva',
                     formProperty: 'comentario',
                     formValues: formValues),
+                
                 const SizedBox(height: 10),
+                
                 _Preferences(
                     formProperty: 'sector',
                     formValues: formValues,
@@ -80,7 +94,9 @@ class FormListaEspera extends StatelessWidget {
                     icon: CustomThemeData.tableRestaurantIcon,
                     opciones: FormValues.opcionesUbicacion,
                     titulo: 'SECTOR'),
+                
                 const SizedBox(height: 10),
+                
                 _Preferences(
                     formProperty: 'demora',
                     formValues: formValues,
@@ -88,7 +104,9 @@ class FormListaEspera extends StatelessWidget {
                     icon: CupertinoIcons.clock,
                     opciones: FormValues.opcionesDemora,
                     titulo: 'DEMORA'),
+                
                 const SizedBox(height: 10),
+                
                 ElevatedButton(
                   style: CustomThemeData.buttonSubmitStyle,
                   child: const Padding(
@@ -116,8 +134,12 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+    
       Text('Agregar a la lista de espera', style: CustomThemeData.formTitle),
+    
       GestureDetector(
           onTap: () => Navigator.pop(context),
           child: const Icon(Icons.close, color: Colors.black)),
@@ -142,6 +164,7 @@ class _InputStyle extends StatelessWidget {
 }
 
 class _CantidadPersonas extends StatefulWidget {
+  
   final String personas;
   final Map<String, dynamic> formValues;
 
@@ -160,10 +183,15 @@ class _CantidadPersonasState extends State<_CantidadPersonas> {
 
     return Row(
       children: [
+       
         const Icon(CupertinoIcons.person),
+      
         sizedBox,
+      
         _data(),
+      
         const Expanded(child: sizedBox),
+      
         GestureDetector(
             onTap: () {
               setState(() {
@@ -172,7 +200,9 @@ class _CantidadPersonasState extends State<_CantidadPersonas> {
               });
             },
             child: const CircleButton(icon: CupertinoIcons.minus)),
+      
         sizedBox,
+      
         GestureDetector(
             onTap: () {
               setState(() {
@@ -189,12 +219,13 @@ class _CantidadPersonasState extends State<_CantidadPersonas> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Cantidad de Personas',
-              style: TextStyle(color: CustomThemeData.grey)),
-          Text(
-            '$personas Personas',
-            style: CustomThemeData.subtitle,
-          )
+          const Text(
+            'Cantidad de Personas',
+             style: TextStyle(color: CustomThemeData.grey)),
+                Text(
+                  '$personas Personas',
+                  style: CustomThemeData.subtitle,
+                )
         ],
       );
 }

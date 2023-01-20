@@ -6,12 +6,14 @@ class CustomInputField extends StatelessWidget {
   final String formProperty;
   final Map<String, dynamic> formValues;
   final bool? validator;
+  final TextInputType? textInputType;
 
   const CustomInputField({
     super.key,
     this.hintText,
     this.labelText,
     this.validator = false,
+    this.textInputType,
     required this.formProperty,
     required this.formValues,
   });
@@ -19,6 +21,7 @@ class CustomInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: textInputType,
       textCapitalization: TextCapitalization.words,
       autofocus: true,
       onChanged: (value) {

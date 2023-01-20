@@ -15,39 +15,46 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<ReservasBloc, ReservasState>(
         builder: (context, state) {
           return SafeArea(
-            child: _MenuHome(state),
+            child: Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Column(
+                  children: [
+                    
+                    const Padding(
+                      padding:  EdgeInsets.only(right: 8),
+                      child:  _AddButton(),
+                    ),
+        
+                    const SizedBox(height: 15),
+        
+                    _BotonesEstadoReserva(),
+        
+                    const SizedBox(height: 15),
+
+                    state.currentPage == 1 
+                    ? const _ListaEsperaTitle()
+                    : const SizedBox(),
+
+          const SizedBox(height: 15),
+         
+          state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
+        ],
+      ),
+    ),
           );
         },
       ),
     );
   }
-} 
+}
 
-class _MenuHome extends StatelessWidget {
-  final ReservasState state;
-
-  const _MenuHome(this.state);
+class _ListaEsperaTitle extends StatelessWidget {
+  
+  const _ListaEsperaTitle();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: Column(
-        children: [
-          
-          const Padding(
-            padding:  EdgeInsets.only(right: 8),
-            child:  _AddButton(),
-          ),
-         
-          const SizedBox(height: 15),
-         
-          _BotonesEstadoReserva(),
-         
-          const SizedBox(height: 15),
-
-          state.currentPage == 1 
-          ? Padding(
             padding: const  EdgeInsets.symmetric(horizontal:8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,17 +64,11 @@ class _MenuHome extends StatelessWidget {
                 Divider(color: CustomThemeData.greyLines),
               ]
             ),
-          )
-          : const SizedBox(),
-
-          const SizedBox(height: 15),
-         
-          state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
-        ],
-      ),
-    );
+          );
   }
-}
+} 
+
+
 
 class _AddButton extends StatelessWidget {
   const _AddButton();

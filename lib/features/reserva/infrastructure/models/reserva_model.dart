@@ -22,8 +22,7 @@ class ReservaModel extends Reserva {
   String toJson() => json.encode(toMap());
 
   factory ReservaModel.fromMap(Map<String, dynamic> json) => ReservaModel(
-        clientData: List<ClientDataModel>.from(
-            json["clientData"].map((x) => ClientDataModel.fromMap(x))),
+        clientData: List<ClientDataModel>.from(json["clientData"].map((x) => ClientDataModel.fromMap(x))),
         comment: json["comment"] ?? '',
         day: json["day"] ?? '',
         quantity: json["quantity"] ?? '',

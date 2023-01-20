@@ -34,14 +34,16 @@ class ReservasState extends Equatable {
       ];
 
   ReservasState copyWith(
-          {int? currentPage,
+          {
+          int? currentPage,
           int? reservasVivas,
           int? cantEnListaEspera,
           int? ingreasadas,
           int? noConcurrieron,
           List<Map<String, dynamic>>? listaEspera,
           List<Reserva>? listaReservas,
-          List<GrupoReservas>? listaReservasAgrupadas}) =>
+          List<GrupoReservas>? listaReservasAgrupadas
+          }) =>
       ReservasState(
           listaEspera: listaEspera ?? this.listaEspera,
           reservasVivas: reservasVivas ?? this.reservasVivas,
