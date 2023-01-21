@@ -70,7 +70,7 @@ class _GrupoDeTarjetas extends StatelessWidget {
         children: listaReservas
             .map((reserva) => CardReserva(
                   horaOespera:  Text(reserva.horaReserva,
-                      style: const TextStyle(fontSize: 12)),
+                  style: const TextStyle(fontSize: 12)),
                   checkAndDiscount: reserva.state == 5 ? true : false,
                   nombre: reserva.clientData[0].name,
                   sector: reserva.sector.toString(),

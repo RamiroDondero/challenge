@@ -6,17 +6,17 @@ import 'package:woki_partner/features/reserva/presentation/widgets/widgets.dart'
 class CardReserva extends StatefulWidget {
   final String nombre;
   final String sector;
-  final bool carrito;
-  final bool discapacitado;
-  final int personas;
   final String telefono;
   final String comentario;
   final String email;
+  final int personas;
+  final int bubbleNum;
+  final bool bubble;
+  final bool carrito;
+  final bool discapacitado;
   final bool checkAndDiscount;
   final Widget horaOespera;
   final Widget iconHoraOcalendario;
-  final bool bubble;
-  final int bubbleNum;
 
   const CardReserva({
     super.key,

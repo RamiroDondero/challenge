@@ -14,6 +14,7 @@ class Contenido extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       children: [
         tel.isEmpty ? const SizedBox() : _LineText(Icons.phone, tel),
