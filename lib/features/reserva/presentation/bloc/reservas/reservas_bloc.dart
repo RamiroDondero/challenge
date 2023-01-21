@@ -11,7 +11,7 @@ import '../../../domain/entities/reserva.dart';
 part 'reservas_event.dart';
 part 'reservas_state.dart';
 
-class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
+class  ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
   final GetLisTReservas getLisTReservas;
   final GetListGrupoReservas getListGrupoReservas;
   final GetCantReservas getCantidadReservas;
@@ -19,7 +19,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
   ReservasBloc(
       {
       required this.getCantidadReservas,
-      required this.getListGrupoReservas,
+      required this.getListGrupoReservas, 
       required this.getLisTReservas
       })
       : super(const ReservasState(listaReservas:[], listaReservasAgrupadas: [] , listaEspera: [])) {

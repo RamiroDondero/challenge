@@ -34,8 +34,6 @@ class HomePage extends StatelessWidget {
                   state.currentPage == 1 
                   ? const _ListaEsperaTitle()
                   : const SizedBox(),
-
-                  const SizedBox(height: 15),
         
                   state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
               ],
