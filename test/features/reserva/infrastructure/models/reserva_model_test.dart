@@ -1,11 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:woki_partner/features/reserva/domain/entities/reserva.dart';
 import 'package:woki_partner/features/reserva/infrastructure/models/reserva_model.dart';
 import 'package:woki_partner/features/user/infrastructure/models/client_data_model.dart';
 
-// import '../../../../../lib/core/fixtures/fixture_reader.dart';
 
 void main() {
   final tReservaModel = ReservaModel(
@@ -30,18 +30,18 @@ void main() {
     expect(tReservaModel, isA<Reserva>());
   });
 
-  // group('fromJson', () {
-  //   test('retorna un ReservaModel valido cuando recibe un Json', () {
-  //     // arrenge
-  //     final List<dynamic> listaMaps =
-  //         json.decode(fixture('datos_prueba_tecnica.json'));
-  //     final jsonMap = listaMaps[0];
-  //     // act
-  //     final result = ReservaModel.fromMap(jsonMap);
-  //     // assert
-  //     expect(result, tReservaModel);
-  //   });
-  // });
+  group('fromJson', () {
+    test('retorna un ReservaModel valido cuando recibe un Json', () {
+      // arrenge
+      
+      final List<dynamic> listaMaps = json.decode(File('assets/datos_prueba_tecnica.json').readAsStringSync());
+      final jsonMap = listaMaps.first;
+      // act
+      final result = ReservaModel.fromMap(jsonMap);
+      // assert
+      expect(result, tReservaModel);
+    });
+  });
 
   group('toJson', () {
     test('retorna un Json valido cuando recibe un ReservaModel', () {

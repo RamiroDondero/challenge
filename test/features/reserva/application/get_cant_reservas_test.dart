@@ -22,10 +22,10 @@ void main() {
 
   const cant = 1;
 
-  group('get cant Reservas', () {
+  group('getcantReservas', () {
     test('debe retornar un int', () {
       // act
-      final result = getCantReservas.getCantReservas(listaReservas, [4, 6, 8]);
+      final result = getCantReservas.getCantReservas(listaReservas, [4, 6]);
       // assert
       expect(result, cant);
     });
