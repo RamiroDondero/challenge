@@ -3,6 +3,9 @@ import '../domain/entities/reserva.dart';
 class GetCantReservas  {
   const GetCantReservas();
 
+
+  /// Recibe una lista de reservas y un arreglo de valores de state que quiero filtrar
+  /// Devuelve la cantidad de reservas que tienen el state solicitado.
   int getCantReservas(List<Reserva> reservas, List<int> state) {
     int cant = 0;
 

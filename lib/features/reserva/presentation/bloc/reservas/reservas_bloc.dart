@@ -28,7 +28,9 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
 
         final failureOrReserva = await getLisTReservas(NoParams());
         
-        failureOrReserva.fold((l) => null, (reservas) {
+        failureOrReserva.fold(
+        (l) => null,
+        (reservas) {
         
         final listaGrupoReservas = getListGrupoReservas.getListGrupoReservas(reservas, state.currentPage);
         

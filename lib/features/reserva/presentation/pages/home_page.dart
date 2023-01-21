@@ -20,53 +20,33 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     
-                    const Padding(
-                      padding:  EdgeInsets.only(right: 8),
-                      child:  _AddButton(),
-                    ),
-        
-                    const SizedBox(height: 15),
-        
-                    _BotonesEstadoReserva(),
-        
-                    const SizedBox(height: 15),
+                  const Padding(
+                    padding:  EdgeInsets.only(right: 8),
+                    child:  _AddButton(),
+                  ),
+      
+                  const SizedBox(height: 15),
+      
+                  _BotonesEstadoReserva(),
+      
+                  const SizedBox(height: 15),
 
-                    state.currentPage == 1 
-                    ? const _ListaEsperaTitle()
-                    : const SizedBox(),
+                  state.currentPage == 1 
+                  ? const _ListaEsperaTitle()
+                  : const SizedBox(),
 
-          const SizedBox(height: 15),
-         
-          state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
-        ],
-      ),
-    ),
+                  const SizedBox(height: 15),
+        
+                  state.currentPage == 1 ? _ListaEspera() : _ListaReservas(state)
+              ],
+              ),
+            ),
           );
         },
       ),
     );
   }
 }
-
-class _ListaEsperaTitle extends StatelessWidget {
-  
-  const _ListaEsperaTitle();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-            padding: const  EdgeInsets.symmetric(horizontal:8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Divider(color: CustomThemeData.greyLines),
-                Text('Lista de espera' , style: CustomThemeData.horaGrupoReservas,),
-                Divider(color: CustomThemeData.greyLines),
-              ]
-            ),
-          );
-  }
-} 
 
 
 
@@ -111,6 +91,28 @@ class _BotonesEstadoReserva extends StatelessWidget {
     );
   }
 }
+
+class _ListaEsperaTitle extends StatelessWidget {
+  
+  const _ListaEsperaTitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+            padding: const  EdgeInsets.symmetric(horizontal:8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Divider(color: CustomThemeData.greyLines),
+                Text('Lista de espera' , style: CustomThemeData.horaGrupoReservas,),
+                Divider(color: CustomThemeData.greyLines),
+              ]
+            ),
+          );
+  }
+} 
+
+
 
 class _ListaReservas extends StatelessWidget {
   final ReservasState state;

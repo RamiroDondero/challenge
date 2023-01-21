@@ -75,7 +75,9 @@ class FormListaEspera extends StatelessWidget {
                 
                 _InputStyle(
                     child: _CantidadPersonas(
-                        personas: 'personas', formValues: formValues)),
+                       personas: 'personas',
+                       formValues: formValues)
+                       ),
                 
                 const SizedBox(height: 10),
                 
@@ -116,7 +118,6 @@ class FormListaEspera extends StatelessWidget {
                         child: Center(child: Text('Agregar a lista espera'))),
                   ),
                   onPressed: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
                     if (!formKey.currentState!.validate()) return;
                     bloc.add(AddListaEsperaEvent(formValues));
                     Navigator.pop(context);
