@@ -1,4 +1,5 @@
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:woki_partner/core/platform/mobile/network_info.dart';
 import 'package:woki_partner/features/reserva/application/get_cant_reservas.dart';
@@ -17,8 +18,9 @@ Future<void> init() async {
   // ! Feature - Reservas
   initFeatures();
   // ! Core
-  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectivity: sl()));
   // ! External
+  sl.registerLazySingleton(() => Connectivity());
 }
 
 void initFeatures() {

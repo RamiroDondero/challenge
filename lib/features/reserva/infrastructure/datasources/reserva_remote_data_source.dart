@@ -24,7 +24,7 @@ class ReservaRemoteDataSourceImpl implements ReservaRemoteDataSource {
       return Future.value(lista);
       
     } catch (e) {
-      return Future.value([]);
+      throw ServerException();
     }
   }
 }
