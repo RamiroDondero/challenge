@@ -12,14 +12,16 @@ class ReservasState extends Equatable {
   final List<Map<String, dynamic>> listaEspera;
 
    const ReservasState(
-      {this.reservasVivas = 0,
+      {
+      this.reservasVivas = 0,
       this.cantEnListaEspera = 0,
       this.noConcurrieron = 0,
       this.ingreasadas = 0,
       this.currentPage = 0,
       required this.listaEspera,
       required this.listaReservasAgrupadas,
-      required this.listaReservas});
+      required this.listaReservas
+      });
 
   @override
   List<Object> get props => [
