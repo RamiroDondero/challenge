@@ -2,6 +2,7 @@ part of 'reservas_bloc.dart';
 
 class ReservasState extends Equatable {
   final List<Reserva> listaReservas;
+  
   final List<GrupoReservas> listaReservasAgrupadas;
   final int currentPage;
   final int reservasVivas;

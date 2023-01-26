@@ -9,7 +9,7 @@ import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:woki_partner/core/error/failures.dart' as _i7;
 import 'package:woki_partner/core/useCase/usecase.dart' as _i8;
-import 'package:woki_partner/features/reserva/application/get_cant_reservas.dart'
+import 'package:woki_partner/core/utils/contador_reservas.dart'
     as _i11;
 import 'package:woki_partner/features/reserva/application/get_list_grupo_reservas.dart'
     as _i9;

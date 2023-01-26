@@ -40,7 +40,7 @@ class _Horario extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(grupoReservas.rangoHorario, style: CustomThemeData.horaGrupoReservas),
+        Text(grupoReservas.rangoHora, style: CustomThemeData.horaGrupoReservas),
         Container(
           decoration: CustomThemeData.sombrasTarjetas,
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),

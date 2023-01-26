@@ -50,10 +50,11 @@ class CustomThemeData {
      fontSize: 20, fontWeight: FontWeight.w600, color: CustomThemeData.dark);
 
   //BOX SHADOW
-  static BoxShadow sombra = BoxShadow(
-      color: Colors.black12.withOpacity(0.05),
-      blurRadius: 7,
-      offset: const Offset(4, 4));
+  static BoxShadow sombra = const BoxShadow(
+      color: Color.fromRGBO(200, 200, 200, 0.25),
+      blurRadius: 5,
+      spreadRadius: 4,
+      offset: Offset(4, 4));
 
   //BOX DECORATION
   static BoxDecoration sombrasTarjetas = BoxDecoration(

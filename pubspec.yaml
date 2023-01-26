@@ -37,11 +37,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_svg: ^1.1.6
   get_it: ^7.2.0
 
 dev_dependencies:
   bloc_test: ^9.1.0
-  build_runner: ^2.3.0 
+  build_runner: ^2.3.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

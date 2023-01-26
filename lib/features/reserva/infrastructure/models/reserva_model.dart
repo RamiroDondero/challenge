@@ -11,10 +11,11 @@ class ReservaModel extends Reserva {
     required this.clientData,
     required super.comment,
     required super.day,
-    required super.quantity,
+    required super.quantity, 
     required super.sector,
     required super.showDay,
     required super.state,
+    required super.timezone
   }) : super(clientData: clientData);
 
   factory ReservaModel.fromJson(String str) => ReservaModel.fromMap(json.decode(str));
@@ -29,6 +30,7 @@ class ReservaModel extends Reserva {
         sector: json["sector"] ?? '',
         showDay: json["showDay"] ?? '',
         state: json["state"] ?? '',
+        timezone: json['timezone'] ?? 0
       );
 
   Map<String, dynamic> toMap() => {
@@ -39,6 +41,7 @@ class ReservaModel extends Reserva {
         "sector": sector,
         "showDay": showDay,
         "state": state,
+        "timezone": timezone
       };
 }
 

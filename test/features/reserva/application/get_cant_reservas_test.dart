@@ -1,6 +1,6 @@
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:woki_partner/features/reserva/application/get_cant_reservas.dart';
+import 'package:woki_partner/core/utils/contador_reservas.dart';
 import 'package:woki_partner/features/reserva/domain/entities/reserva.dart';
 
 void main() {

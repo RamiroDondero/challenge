@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:woki_partner/core/constants/custom_theme_data.dart';
 
 import '../widgets.dart';
@@ -34,7 +35,10 @@ class AddButton extends StatelessWidget {
         height: 50,
         decoration: const BoxDecoration(
             color: CustomThemeData.addButton, shape: BoxShape.circle),
-            child: const Icon(Icons.person_add_alt_1_sharp, color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.only(top:14, right:9, left:15, bottom: 14.73),
+              child: SvgPicture.asset('assets/add.svg',width:26 , height:21.27),
+            ),
       ),
     );
   }

@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import '../../../user/domain/entity/client_data.dart';
 
 class Reserva extends Equatable {
-
   final List<ClientData> clientData;
   final String comment;
   final String day;
@@ -12,7 +11,8 @@ class Reserva extends Equatable {
   final String showDay;
   final int state;
   final String horaReserva;
-  
+  final int timezone;
+
   const Reserva({
     this.horaReserva = '',
     required this.clientData,
@@ -22,18 +22,18 @@ class Reserva extends Equatable {
     required this.sector,
     required this.showDay,
     required this.state,
+    required this.timezone
   });
 
-  Reserva copyWith({
-    List<ClientData>? clientData,
-    String? comment,
-    String? day,
-    int? quantity,
-    String? sector,
-    String? showDay,
-    int? state,
-    String? horaReserva
-  }) =>
+  Reserva copyWith(
+          {List<ClientData>? clientData,
+          String? comment,
+          String? day,
+          int? quantity,
+          String? sector,
+          String? showDay,
+          int? state,
+          String? horaReserva}) =>
       Reserva(
           horaReserva: horaReserva ?? this.horaReserva,
           clientData: clientData ?? this.clientData,
@@ -42,19 +42,11 @@ class Reserva extends Equatable {
           quantity: quantity ?? this.quantity,
           sector: sector ?? this.sector,
           showDay: showDay ?? this.showDay,
-          state: state ?? this.state);
-          
-            
-            
+          state: state ?? this.state,
+          timezone: timezone
+          );
+
   @override
-  List<Object?> get props => [
-    clientData,
-    comment,
-    day,
-    quantity,
-    sector,
-    showDay,
-    state,
-    horaReserva
-  ];
+  List<Object?> get props =>
+      [clientData, comment, day, quantity, sector, showDay, state, horaReserva, timezone];
 }

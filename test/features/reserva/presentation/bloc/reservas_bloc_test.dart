@@ -3,14 +3,13 @@ import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:woki_partner/core/useCase/usecase.dart';
-import 'package:woki_partner/features/reserva/application/get_cant_reservas.dart';
+import 'package:woki_partner/core/utils/contador_reservas.dart';
 import 'package:woki_partner/features/reserva/application/get_list_grupo_reservas.dart';
 import 'package:woki_partner/features/reserva/application/get_list_reservas.dart';
 import 'package:woki_partner/features/reserva/domain/entities/grupo_reservas.dart';
 import 'package:woki_partner/features/reserva/domain/entities/reserva.dart';
 import 'package:woki_partner/features/reserva/presentation/bloc/reservas/reservas_bloc.dart';
 
-import '../../application/get_list_reservas_test.mocks.dart';
 import 'reservas_bloc_test.mocks.dart';
 
   @GenerateNiceMocks([MockSpec<GetLisTReservas>()])

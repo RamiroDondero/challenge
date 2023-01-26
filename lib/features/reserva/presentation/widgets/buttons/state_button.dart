@@ -23,9 +23,9 @@ class StateButton extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(16)));
 
     return AnimatedContainer(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.all(8),
       alignment: Alignment.center,
-      margin: const EdgeInsets.symmetric(horizontal: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       height: 30,
       decoration: boxDecoration,
       duration: const Duration(milliseconds: 200),
@@ -34,7 +34,8 @@ class StateButton extends StatelessWidget {
               color: selected ? Colors.white : CustomThemeData.primaryColor,
               fontSize: 10,
               fontWeight: FontWeight.w700,
-              letterSpacing: 0.6)),
+              letterSpacing: 1.04,
+              )),
     );
   }
 }
